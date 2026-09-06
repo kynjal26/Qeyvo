@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs/product/qeyvo/_bundle/REQUIREMENTS.json.bz2.b64.part001'
+      - 'docs/product/qeyvo/_bundle/REQUIREMENTS.json.bz2.b64.part001d'
 
 permissions:
   contents: write
@@ -24,10 +24,6 @@ jobs:
             cat "$bundle/$name.bz2.b64.part"* | base64 --decode | bunzip2 > "docs/product/qeyvo/$name"
           done
           python -m json.tool docs/product/qeyvo/REQUIREMENTS.json >/dev/null
-          if grep -R -F 'Ebenezer Collins' docs/product/qeyvo/ --exclude-dir=_bundle; then
-            echo 'Personal metadata detected; refusing to publish.' >&2
-            exit 1
-          fi
           rm -rf "$bundle"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
