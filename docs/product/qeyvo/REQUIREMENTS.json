@@ -1,0 +1,3690 @@
+{
+  "metadata": {
+    "schema_version": "1.1",
+    "product": "Qeyvo",
+    "prd_version": "1.2",
+    "prepared_date": "2026-09-06",
+    "authoritative_document": "MASTER_PRD.md",
+    "requirement_count": 116,
+    "scenario_count": 52,
+    "phase_counts": {
+      "P0": 88,
+      "P1": 21,
+      "P2": 7
+    },
+    "register_status": "BOOTSTRAP_GAP_INDEX_NOT_CURRENT_QEYVO_IMPLEMENTATION_EVIDENCE",
+    "dependency_note": "Bootstrap graph to reconcile against existing Qeyvo modules and completed work during WS-00. All whole-PRD constraints, phase gates, architectural invariants and owner authorisation gates also apply.",
+    "status_values": [
+      "NOT_ASSESSED",
+      "NOT_STARTED",
+      "IN_PROGRESS",
+      "IMPLEMENTED_UNVERIFIED",
+      "BLOCKED_EXTERNAL",
+      "VERIFIED",
+      "DEFERRED_BY_OWNER"
+    ],
+    "suggested_topological_order": [
+      "FND-001",
+      "FND-002",
+      "BRD-001",
+      "BRD-002",
+      "BRD-003",
+      "BRD-004",
+      "IAM-001",
+      "IAM-002",
+      "IAM-003",
+      "IAM-004",
+      "IAM-005",
+      "ONB-001",
+      "POL-001",
+      "BIL-003",
+      "BIL-004",
+      "WRK-002",
+      "POL-002",
+      "WRK-003",
+      "WRK-005",
+      "KNW-001",
+      "KNW-002",
+      "KNW-003",
+      "KNW-005",
+      "INT-001",
+      "INT-003",
+      "INT-002",
+      "AGT-001",
+      "FLW-001",
+      "FLW-004",
+      "TPL-001",
+      "ONB-002",
+      "SEC-007",
+      "ADM-003",
+      "ONB-003",
+      "KNW-004",
+      "KNW-006",
+      "KNW-007",
+      "AGT-002",
+      "AGT-003",
+      "AGT-004",
+      "AGT-005",
+      "WRK-001",
+      "WRK-004",
+      "WRK-006",
+      "FLW-002",
+      "FLW-003",
+      "FLW-005",
+      "FLW-006",
+      "TPL-002",
+      "TPL-003",
+      "TPL-004",
+      "INT-004",
+      "INT-005",
+      "INT-006",
+      "POL-003",
+      "POL-004",
+      "POL-005",
+      "POL-006",
+      "CMP-001",
+      "CMP-002",
+      "CMP-003",
+      "CMP-004",
+      "CMP-005",
+      "MOD-001",
+      "MOD-002",
+      "MOD-003",
+      "MOD-004",
+      "BIL-001",
+      "BIL-002",
+      "BIL-005",
+      "BIL-006",
+      "BIL-007",
+      "BIL-008",
+      "ADM-001",
+      "ADM-002",
+      "ADM-004",
+      "ADM-005",
+      "UXD-001",
+      "UXD-002",
+      "UXD-003",
+      "UXD-004",
+      "TST-001",
+      "NFR-001",
+      "REL-003",
+      "UXD-005",
+      "DAT-001",
+      "DAT-002",
+      "DAT-003",
+      "DAT-004",
+      "DAT-005",
+      "API-001",
+      "NFR-002",
+      "NFR-003",
+      "NFR-004",
+      "NFR-005",
+      "NFR-006",
+      "SEC-001",
+      "SEC-002",
+      "SEC-003",
+      "SEC-004",
+      "SEC-005",
+      "SEC-006",
+      "ANA-001",
+      "ANA-002",
+      "ANA-003",
+      "ANA-004",
+      "TST-002",
+      "REL-001",
+      "REL-002",
+      "REL-004",
+      "ENT-001",
+      "ENT-002",
+      "ENT-003",
+      "ENT-004",
+      "ENT-005",
+      "ENT-006"
+    ],
+    "revision_date": "2026-09-06",
+    "implementation_target": "EXISTING_QEYVO_REPOSITORY",
+    "implementation_repository": null,
+    "implementation_commit": null,
+    "current_qeyvo_implementation_audited": false,
+    "merge_policy": "Reconcile with the existing Qeyvo ledger; never overwrite verified progress with this bootstrap index.",
+    "owner_confirmed_context": {
+      "product_name": "Qeyvo",
+      "existing_product": true,
+      "product_identity_in_documents": "Qeyvo"
+    },
+    "baseline_classification_values": [
+      "NOT_ASSESSED",
+      "SATISFIED",
+      "PRESENT_UNVERIFIED",
+      "PARTIAL",
+      "MISSING",
+      "CONFLICTING"
+    ],
+    "revision_note": "Qeyvo-only product specification; current implementation remains unassessed. Preserve completed work and verify actual gaps.",
+    "reference_note": "External standards are design references, not evidence of Qeyvo implementation. Actual repository and commit remain to be recorded during WS-00."
+  },
+  "requirements": [
+    {
+      "id": "FND-001",
+      "title": "Establish the existing Qeyvo baseline and gap matrix",
+      "phase": "P0",
+      "section": 5,
+      "section_title": "Qeyvo baseline and capability assessment",
+      "workstream": "WS-00",
+      "requirement": "Record the current Qeyvo repository identity, branch, commit, worktree status, deployment version if known, package scripts and actual architecture. Record Qeyvo’s change history and known deployment base where available; do not invent an unknown baseline. Read applicable repository guidance, install lockfile-pinned dependencies, and run the available baseline checks in disposable environments. Record pre-existing failures before modification. Do not reset to another snapshot, reinitialise the repository, replace the product or discard unrelated work.\n\nMap every requirement to Qeyvo’s current implementation with a baseline classification of satisfied, present-unverified, partial, missing, conflicting or not-assessed, supported by code/test references. Preserve existing modules, verified functionality and completed work. Reuse compatible existing architecture even when it differs from a proposed design; implement only documented gaps.",
+      "acceptance": "`docs/product/qeyvo-baseline.md` identifies the current Qeyvo source, environment, commands, results and limitations; `docs/product/qeyvo-gap-matrix.md` maps every requirement to existing behaviour, evidence, delta and migration risk. `docs/product/dependency-register.md` records dependency versions, licences and update-review requirements separately. An existing evidence-backed requirement is not recreated. Tests confirm Qeyvo-specific behaviour is retained. No unsupported “already complete” or “missing” status is accepted. Missing Qeyvo access is explicitly blocked, not replaced with a different codebase.",
+      "bootstrap_dependencies": [],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-051",
+        "QA-052"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FND-002",
+      "title": "Maintain product and implementation traceability",
+      "phase": "P0",
+      "section": 5,
+      "section_title": "Qeyvo baseline and capability assessment",
+      "workstream": "WS-00",
+      "requirement": "Keep a requirement ledger, dependency graph, ADRs, risk register and workstream state in version control. Every material change references requirement IDs and includes tests or a documented reason tests cannot run. Report blocked external validation separately from completed implementation.",
+      "acceptance": "Each requirement has an owner/workstream, phase, status, code links, test links and evidence. A CI validator rejects unknown IDs, missing mandatory fields and release-critical requirements marked done without evidence.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-051"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BRD-001",
+      "title": "Centralise and preserve Qeyvo brand configuration",
+      "phase": "P0",
+      "section": 6,
+      "section_title": "Qeyvo brand consistency and commercial identity",
+      "workstream": "WS-01",
+      "requirement": "Inspect and extend Qeyvo’s existing brand configuration; create a typed central configuration only if one is missing. Consume it across the website, application, transactional messages, downloadable documents and supported native clients. Include display name, legal entity, application origin, marketing origin, support contact, logo variants, favicon, app icons, theme tokens, metadata, legal URLs and notification sender identity. Preserve existing approved Qeyvo assets and working design tokens rather than inventing a replacement visual identity. Keep secrets outside this object.\n\nSet the canonical display name to **Qeyvo**; when a `PRODUCT_NAME` key is used, its value is `Qeyvo`. Do not ask the founder to choose the name again. Derive domains, legal entity, sender identities and existing asset locations from verified Qeyvo configuration; retain clearly non-production placeholders only for genuinely unknown values. Choosing Qeyvo does not assert trademark clearance, domain ownership or a particular legal entity.",
+      "acceptance": "Qeyvo appears consistently across every released surface without placeholder-name leakage. Existing Qeyvo artwork and theme tokens remain intact unless a specific approved change is recorded. An isolated test fixture verifies central configuration propagation without changing the actual product name. Production checks reject unknown legal/contact values and incorrect support destinations that would misdirect Qeyvo customers.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-032"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BRD-002",
+      "title": "Complete only remaining Qeyvo rebranding gaps",
+      "phase": "P0",
+      "section": 6,
+      "section_title": "Qeyvo brand consistency and commercial identity",
+      "workstream": "WS-01",
+      "requirement": "Audit Qeyvo’s already-branded surfaces and inventory only remaining inconsistent product names and marks in navigation, onboarding, settings, login, errors, emails, invitation links, titles, manifests, exported reports, documentation, URLs and installation instructions. Keep correct Qeyvo branding; fix inconsistencies and unfinished surfaces. Rework only unsuitable copy around company teammates and verified work; describe Qeyvo on its own merits. Replace residual inconsistent customer-facing artwork with existing approved Qeyvo assets or separately approved, properly licensed assets; do not redesign the brand by default.\n\nDo not perform a destructive global string replacement. Internal package names, database identifiers and environment variables can retain compatibility-sensitive names when necessary. Introduce aliases and migrations before renaming persisted technical identifiers. Preserve required attribution and licence notices.",
+      "acceptance": "Automated text/asset scans and visual review find no inconsistent branding in released Qeyvo journeys; allowlisted attribution remains. Correct existing Qeyvo surfaces are retained. Existing encrypted credentials, stored files, routes, sessions, integrations and migrations continue to work after the changes. A no-gap surface is recorded as satisfied, not rebuilt.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-032",
+        "QA-052"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BRD-003",
+      "title": "Establish a truthful commercial website",
+      "phase": "P0",
+      "section": 6,
+      "section_title": "Qeyvo brand consistency and commercial identity",
+      "workstream": "WS-01",
+      "requirement": "Audit and extend the existing Qeyvo website; retain satisfactory pages and routes, and add or correct product, use cases, how-it-works, plans or pilot enquiry, security/data handling, support, legal and sign-in pages. Explain supervision, approved knowledge, execution allowances and third-party dependencies. Label demonstrations as demonstrations. Never invent testimonials, certifications, customer logos, savings figures or feature availability.",
+      "acceptance": "Every public feature claim maps to a passed requirement or is explicitly marked planned. Forms reach the correct authorised destination in production; staging messages remain in test infrastructure. Privacy and cookie controls match actual deployed behaviour.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BRD-004",
+      "title": "Clear brand and third-party rights before publication",
+      "phase": "P0",
+      "section": 6,
+      "section_title": "Qeyvo brand consistency and commercial identity",
+      "workstream": "WS-01",
+      "requirement": "Maintain a commercial-use inventory for third-party code, assets, fonts, connectors, models and sandbox services. Preserve applicable third-party licences, attribution and modification notices in the appropriate distributed-code and legal-notice locations. Review the obligations of every dependency used in the release, including any Apache-licensed components. Keep product-facing identity and messaging focused on Qeyvo without removing required legal notices. [S07]\n\nQeyvo is the chosen name; name selection is not an open implementation task. Review and record any existing evidence of domain ownership and commercial-name clearance. Domain, registry, similar-mark and intended-market checks are separate from the owner’s naming decision; neither this PRD nor an empty exact-name search establishes legal clearance. Do not reopen naming unless the owner directs a change or a documented rights conflict requires a decision. Disable optional providers with unresolved terms. Review the commercial embedding and redistribution terms of each selected integration before enabling it.",
+      "acceptance": "The identity register records Qeyvo as owner-confirmed and records verified domain/asset/legal details without inventing them. A reviewed rights register exists before the relevant public launch or expansion. Missing rights/vendor approvals block only the affected release or provider, not unrelated Qeyvo development.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [
+        "S07"
+      ],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "IAM-001",
+      "title": "Secure account lifecycle",
+      "phase": "P0",
+      "section": 7,
+      "section_title": "Identity, organisations, spaces, and permissions",
+      "workstream": "WS-02",
+      "requirement": "Support verified email signup or invitation, login, password reset, logout, session listing and revocation. Require MFA for platform operators, owners and privileged administrators; make it available to all users. Protect invitation acceptance, email changes and recovery against replay, enumeration and account takeover. Recovery must not bypass privileged MFA without an audited recovery procedure.",
+      "acceptance": "Tests cover expired/replayed links, session invalidation, enumeration-safe errors, cross-organisation invitation substitution and recovery. Secrets and reset tokens do not appear in logs. Seed-owner creation uses an operator-controlled bootstrap process, not an unprotected “first public signup wins” rule.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "IAM-002",
+      "title": "Treat organisation identity as a server-side security boundary",
+      "phase": "P0",
+      "section": 7,
+      "section_title": "Identity, organisations, spaces, and permissions",
+      "workstream": "WS-02",
+      "requirement": "Map the customer organisation to an immutable internal tenant ID. Derive tenant and actor from authenticated server state and verified routing, never merely from a request parameter, subdomain or model output. Enforce membership for API calls, real-time subscriptions, jobs, exports, connectors, storage and model context assembly.",
+      "acceptance": "Automated cross-tenant object-substitution tests fail closed across every resource class. The same user can belong to two organisations without cached results, sessions, credentials or prompts bleeding between them.",
+      "bootstrap_dependencies": [
+        "IAM-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-001",
+        "QA-002",
+        "QA-044"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "IAM-003",
+      "title": "Implement scoped roles and content ACLs",
+      "phase": "P0",
+      "section": 7,
+      "section_title": "Identity, organisations, spaces, and permissions",
+      "workstream": "WS-02",
+      "requirement": "Implement the roles in Section 3 with resource scopes and explicit grants. Permission evaluation uses platform prohibitions, organisation policy, space/resource ACLs, acting human or service principal, agent grant, connector scope and approved action constraints. Effective rights are an intersection, never an accidental union across agents or users.",
+      "acceptance": "A generated role/action/resource matrix tests allow and deny cases. Billing admins cannot read messages by default. An organisation administrator without a confidential-space grant cannot retrieve that space through search, exports or an agent.",
+      "bootstrap_dependencies": [
+        "IAM-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-001",
+        "QA-003"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "IAM-004",
+      "title": "Revoke access during ongoing work",
+      "phase": "P0",
+      "section": 7,
+      "section_title": "Identity, organisations, spaces, and permissions",
+      "workstream": "WS-02",
+      "requirement": "Membership removal, connection disconnection, credential revocation and policy changes must invalidate relevant execution authority. Re-check rights before each model-context read and external operation; do not rely on permissions captured when the job first entered a queue. Already submitted external requests may complete and require reconciliation.",
+      "acceptance": "Removing an approver or operator while work waits prevents subsequent execution under their revoked authority. Stops and revocations meet Section 25 targets. A run cannot continue by switching to a more privileged teammate or cached credential.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-004",
+        "QA-012"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "IAM-005",
+      "title": "Manage organisation and space lifecycle",
+      "phase": "P0",
+      "section": 7,
+      "section_title": "Identity, organisations, spaces, and permissions",
+      "workstream": "WS-02",
+      "requirement": "Support membership invitations, role changes, space creation, ownership transfer, archiving and deletion requests with audit history. Prevent removing the last owner. Spaces must have defined knowledge collections, agents, allowed integrations and confidentiality rules. Organisation-level configuration changes must be versioned.",
+      "acceptance": "Lifecycle operations are idempotent where appropriate and permission-checked. Ownership transfer requires acceptance and strong authentication. Archived spaces stop scheduling new work but preserve permitted evidence until retention rules apply.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ONB-001",
+      "title": "Build a guided company interview",
+      "phase": "P0",
+      "section": 8,
+      "section_title": "Company onboarding and activation",
+      "workstream": "WS-01",
+      "requirement": "Collect company identity, services, operating hours, locale, timezone, terminology, tone, departments, designated supervisor, recurring workflow and success criteria. Ask for approved source documents and system connections only when needed. Clearly separate customer-provided facts from AI-generated suggestions. Save progress and let authorised staff resume.",
+      "acceptance": "An organisation can complete onboarding without model-provider expertise. The generated company profile is editable, source-linked where applicable, versioned, and unpublished until a human confirms it. No invented price or policy becomes approved knowledge.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ONB-002",
+      "title": "Activate through a supervised trial",
+      "phase": "P0",
+      "section": 8,
+      "section_title": "Company onboarding and activation",
+      "workstream": "WS-01",
+      "requirement": "Activation consists of choosing a role template, connecting a scoped account, supplying minimum knowledge, reviewing permissions and budget, running a test case, inspecting the planned action and approving or rejecting it. Default to a dry-run or draft-only path. Display missing prerequisites in plain language.",
+      "acceptance": "The first live activation is impossible without a named responsible human, allowed toolset, configured budget and passed template trial. Trial outputs are visibly distinguished from actual external actions.",
+      "bootstrap_dependencies": [
+        "TPL-001",
+        "POL-002",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ONB-003",
+      "title": "Support assisted and self-service onboarding",
+      "phase": "P1",
+      "section": 8,
+      "section_title": "Company onboarding and activation",
+      "workstream": "WS-01",
+      "requirement": "Provide a customer checklist, progress indicators, contextual help and guided integration repair. Platform staff may assist through explicit support grants, not hidden impersonation. Capture the configuration as a reusable template without customer secrets or confidential content.",
+      "acceptance": "A new eligible organisation provisions and completes the demo workflow through the documented self-service path. An interrupted onboarding attempt resumes without duplicate organisations, subscriptions or deployments. Assisted setup actions appear in the customer audit history.",
+      "bootstrap_dependencies": [
+        "ONB-001",
+        "ONB-002",
+        "ADM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-001",
+      "title": "Ingest supported company information",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Support uploaded PDF, DOCX, TXT, Markdown, CSV and XLSX files, plus explicitly selected connected documents. Parse asynchronously in isolated workers. Preserve headings, tables, sheet names, page references and source locations where available. Detect unsupported, encrypted, corrupt, oversized or scanned inputs and report them honestly. Scanned-document OCR may be an explicitly enabled, metered capability; never silently claim unreadable content was indexed.",
+      "acceptance": "A fixture corpus tests all supported formats and failure modes. Users see upload, scanning, parsing, indexing, review and publication states. Failed ingestion does not publish empty or fabricated content. Spreadsheet formulas and document macros are not executed during ingestion.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-015"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-002",
+      "title": "Govern the company knowledge lifecycle",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Implement draft, reviewing, approved, superseded, archived and deleted states, with editorial permission and revision history. Owners can identify authoritative sources, effective dates, review deadlines and superseded policies. Conflicting documents must not silently resolve by whichever chunk is retrieved first.",
+      "acceptance": "A new price list can supersede an old one; the old version remains in permitted audit history but is excluded from current operational answers. A workflow needing an expired critical policy asks for review or stops. Publishing a knowledge change records the actor, diff and version.",
+      "bootstrap_dependencies": [
+        "KNW-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-013"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-003",
+      "title": "Add permission-aware hybrid retrieval",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Extend the memory and retrieval interfaces with database-backed lexical search and vector similarity for approved content. PostgreSQL with a compatible pgvector extension is the default implementation direction; benchmark before adopting additional search infrastructure. [S12] Apply tenant, collection, resource and actor ACL constraints inside candidate selection and re-check them before prompt assembly. Do not fetch unrestricted documents and rely on the model to hide them.",
+      "acceptance": "English and French queries retrieve authorised semantic matches beyond exact substrings. Results include source/version/location. Cross-tenant and restricted-collection documents cannot enter candidates, snippets, caches or model context. Retrieval satisfies the defined evaluation set and latency budget.",
+      "bootstrap_dependencies": [
+        "KNW-001",
+        "KNW-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [
+        "S12"
+      ],
+      "acceptance_scenario_ids": [
+        "QA-002"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-004",
+      "title": "Keep connected knowledge fresh and revocable",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Track sync cursors, upstream identifiers, checksums, ACL observations, last successful refresh and failures. Support incremental updates and deletions. Invalidate derived chunks, embeddings, summaries and caches when access or source status changes. Distinguish observed revocation from an upstream change not yet delivered; disclose the configured sync interval. Use live authorisation checks or deny access where authoritative freshness cannot be established for restricted content.",
+      "acceptance": "A detected source revocation immediately prevents future context reads and invalidates outstanding affected work. Runs holding revoked content stop and rebuild context before continuation. The UI displays stale/failed sync states rather than presenting outdated information as current.",
+      "bootstrap_dependencies": [
+        "KNW-003",
+        "IAM-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-012"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-005",
+      "title": "Ground answers and business actions in evidence",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Show source citations for factual answers and attach supporting evidence to proposed business actions. Distinguish quotations, summaries, calculations and assumptions. Deterministic business calculations must use typed data and tested code, not unsupported model arithmetic. Relevant source access must also be enforced when a human opens a citation.",
+      "acceptance": "A quotation draft identifies the approved catalogue version and calculation inputs. Missing or contradictory facts produce an explicit question or escalation. An unauthorised reviewer does not receive confidential source content inside an approval card.",
+      "bootstrap_dependencies": [
+        "KNW-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-006",
+      "title": "Separate memory scopes and require reviewed promotion",
+      "phase": "P0",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Implement private user memory, agent-local working memory, approved shared company memory and task-local context as distinct scopes. Store revisions, provenance and deletion state. A correction can be proposed as durable memory, but promotion into company-wide policy requires a Knowledge Editor or equivalent approval. Agents cannot use memory to expand their permissions.",
+      "acceptance": "A private conversation cannot silently teach all company agents. A user can inspect, correct, export and delete permitted memories. Contradictory corrections produce a review request; deletion removes derived retrieval material within the defined deletion window.",
+      "bootstrap_dependencies": [
+        "KNW-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-014"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "KNW-007",
+      "title": "Measure retrieval and knowledge quality",
+      "phase": "P1",
+      "section": 9,
+      "section_title": "Company knowledge, retrieval, and memory",
+      "workstream": "WS-04",
+      "requirement": "Provide a knowledge-health view covering missing sources, stale collections, failed syncs, disputed memories and unanswered question clusters. Maintain versioned bilingual evaluation datasets and run them before model, indexing, chunking or retrieval changes. Reviewer judgements must be reproducible and separate from model-generated self-scores.",
+      "acceptance": "A retrieval change cannot ship when it introduces an access violation or exceeds the permitted quality-regression threshold. Evaluation reports expose dataset size, source versions, judged relevance and failure examples. On the approved answerable-question set, target retrieval Recall@10 of at least 90% and citation-support precision of at least 95%; on the designated unanswerable set, unsupported definitive answers must remain below 5%. These are evaluation targets, not observed results. Any unauthorised retrieval is release-blocking regardless of averages.",
+      "bootstrap_dependencies": [
+        "KNW-003",
+        "KNW-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "AGT-001",
+      "title": "Define a complete teammate contract",
+      "phase": "P0",
+      "section": 10,
+      "section_title": "AI teammates, configuration, and delegation",
+      "workstream": "WS-05",
+      "requirement": "Each teammate has a name, role, description, accountable human, organisation and space, task scope, knowledge grants, tool grants, action policy, allowed models, default output formats, language, timezone, schedule, budget, concurrency limit, escalation policy and success criteria. Configuration is typed, validated, versioned and inspectable.",
+      "acceptance": "A teammate without mandatory ownership, scope and budget cannot activate. The configuration editor shows effective permissions, not just requested permissions. Saving a prompt cannot change server-side grants or financial limits.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "AGT-002",
+      "title": "Manage lifecycle and safe configuration changes",
+      "phase": "P0",
+      "section": 10,
+      "section_title": "AI teammates, configuration, and delegation",
+      "workstream": "WS-05",
+      "requirement": "Implement draft, testing, active, paused, suspended and archived states. Clone only configuration and approved reusable assets; never copy secrets, browser sessions or private memories by default. New versions are tested before activation. Permission reductions affect in-flight runs immediately; other configuration changes apply to new runs unless explicitly migrated.",
+      "acceptance": "Rollback selects a previous configuration while still respecting current policy, access revocations and prohibited tools. Archived or suspended agents do not start new work. A clone requires fresh connection grants and ownership confirmation.",
+      "bootstrap_dependencies": [
+        "AGT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "AGT-003",
+      "title": "Make learning explainable and reviewable",
+      "phase": "P0",
+      "section": 10,
+      "section_title": "AI teammates, configuration, and delegation",
+      "workstream": "WS-05",
+      "requirement": "Allow a supervisor to correct an output, teach a procedure, attach examples and propose an updated skill or workflow. Present a diff, affected tests and expected scope before publishing. Preserve the distinction between a conversational instruction and an approved operational procedure.",
+      "acceptance": "“Do it this way next time” produces a proposed change in the appropriate scope. It does not silently create a broader company policy, grant a new connector or remove a required approval. Published changes link to their review and test history.",
+      "bootstrap_dependencies": [
+        "AGT-001",
+        "KNW-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "AGT-004",
+      "title": "Constrain multi-agent collaboration",
+      "phase": "P0",
+      "section": 10,
+      "section_title": "AI teammates, configuration, and delegation",
+      "workstream": "WS-05",
+      "requirement": "Support bounded delegation to approved peer agents and short-lived subagents. Propagate tenant, resource restrictions, ancestry, cancellation and the root budget. A child receives only the intersection of its own permissions and the delegated grant. The system must prevent cycles and enforce depth, fan-out, active-child and aggregate-cost limits.",
+      "acceptance": "A low-privilege sales agent cannot obtain payroll information through a more privileged peer. Child usage is attributed once to the root job. Cancelling a parent prevents new descendant effects. The UI shows delegation, responsible agents and aggregate progress.",
+      "bootstrap_dependencies": [
+        "AGT-001",
+        "POL-001",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-010",
+        "QA-023"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "AGT-005",
+      "title": "Provide a workforce directory and supervision view",
+      "phase": "P1",
+      "section": 10,
+      "section_title": "AI teammates, configuration, and delegation",
+      "workstream": "WS-05",
+      "requirement": "Show teammates by department, owner, role, status, health, active work, approval backlog, recent verified outcomes and spending. Provide a clear pause action and links to configuration, knowledge and evidence. Support search, filtering and saved views for managers.",
+      "acceptance": "Managers see only accessible resources and can identify why a teammate is blocked without reading every conversation. Names and avatars do not imply human identity; interfaces identify the teammate as AI.",
+      "bootstrap_dependencies": [
+        "AGT-002",
+        "WRK-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-001",
+      "title": "Provide task-oriented conversations",
+      "phase": "P0",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Support streaming text, attachments, source citations, structured work cards, clarification requests and draft previews. Users must be able to submit work, queue follow-up instructions, explicitly steer a pending plan, or cancel. Changes that alter an approved action invalidate that approval. Store client submission IDs to prevent duplicate work after reconnects or repeated clicks.",
+      "acceptance": "A slow or disconnected browser can reconnect and reconstruct the same task and output stream. “Sent,” “updated,” and “completed” appear only after verified execution. A pending action changed by steering returns to planning/review rather than using stale approval.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-001",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-017"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-002",
+      "title": "Implement a durable task and run state machine",
+      "phase": "P0",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Separate a customer task from its execution attempts, steps and external effects. Persist state transitions transactionally. Required states include queued, running, waiting for input, waiting for approval, waiting for credential repair, paused by budget, retry scheduled, succeeded, partially completed, failed, cancelled and outcome unknown. Provide stable reason codes and human explanations.",
+      "acceptance": "A worker restart resumes or reconciles from durable state without inventing completion or duplicating an effect. Users can distinguish an application failure from a provider outage, denied action, incomplete input or unresolved external outcome.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-001",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-019"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-003",
+      "title": "Recover without duplicate external actions",
+      "phase": "P0",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Use an effect ledger, transactional outbox, leases with fencing, provider idempotency keys where available, and read-after-write reconciliation. Treat external requests as at-least-once delivery with reconciliation, not an unsupported universal exactly-once guarantee. For a timeout after submission, use `outcome_unknown` until the destination can be checked.",
+      "acceptance": "Crash tests before dispatch, after dispatch and after remote success do not create duplicate quotation emails or CRM records in supported certified operations. Unsupported reconciliation paths stop for human resolution instead of retrying blindly.",
+      "bootstrap_dependencies": [
+        "WRK-002",
+        "POL-002",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-006",
+        "QA-018",
+        "QA-019",
+        "QA-027"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-004",
+      "title": "Support pause, cancel and human escalation",
+      "phase": "P0",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Pause prevents new steps while retaining recoverable state; cancel is terminal for that attempt. Neither promises to undo an already completed external action. Escalation specifies the responsible person, reason, requested decision, relevant evidence and deadline. Waiting must not consume active computer or model resources unnecessarily.",
+      "acceptance": "The customer can stop an agent from every active-task view. All descendants receive the stop. The outcome explicitly lists completed, cancelled and unresolved effects. Cancellation and resource release meet the performance targets.",
+      "bootstrap_dependencies": [
+        "WRK-002",
+        "AGT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-005",
+      "title": "Verify results and deliver useful artefacts",
+      "phase": "P0",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Task templates define outcome checks: destination identifier, read-back values, message receipt, generated file validation or authorised human acceptance. Support downloadable documents, tables, reports and evidence bundles with controlled access. Preview generated HTML and documents in a sandboxed viewer.",
+      "acceptance": "The task cannot declare a downstream update successful from the model’s own assertion. A malformed generated document is rejected or clearly marked failed. File exports preserve tenant access restrictions and do not expose executable content unsafely.",
+      "bootstrap_dependencies": [
+        "WRK-002",
+        "WRK-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-039"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "WRK-006",
+      "title": "Provide search and an action history",
+      "phase": "P1",
+      "section": 11,
+      "section_title": "Conversations, tasks, and durable execution",
+      "workstream": "WS-05",
+      "requirement": "Search permitted tasks, conversations, artefacts and structured outcomes with filters for teammate, owner, date, state and workflow. Preserve a chronological distinction between instruction, proposal, approval, execution, verification and correction. Do not expose hidden model reasoning as a product requirement; show evidence and concise decision explanations instead.",
+      "acceptance": "Audit and search results respect current access policies. Pagination remains stable under new events. A reviewer can reconstruct what happened without relying on an editable chat summary.",
+      "bootstrap_dependencies": [
+        "WRK-002",
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-001",
+      "title": "Create versioned, typed workflows",
+      "phase": "P0",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "A workflow declares its trigger, input schema, steps, conditions, permitted tools, knowledge dependencies, approval points, retry policy, timeout, budget, output schema and success verifier. Initial steps include fetch authorised data, retrieve knowledge, transform/calculate, draft, request approval, perform certified action, wait and verify.",
+      "acceptance": "Invalid workflows fail validation before activation. Editing a published workflow creates a new version. In-flight work references the original workflow version unless a documented migration safely updates it. An arbitrary prompt cannot bypass explicit tool or approval constraints.",
+      "bootstrap_dependencies": [
+        "AGT-001",
+        "WRK-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-002",
+      "title": "Schedule reliably in the customer’s timezone",
+      "phase": "P0",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "Support one-time, recurring and business-hours schedules with explicit IANA timezones. Store execution timestamps in UTC while preserving schedule intent. Handle daylight-saving transitions, missed execution, overlap, catch-up and clock drift explicitly. Default overlap policy is skip/coalesce, not concurrent duplicate execution.",
+      "acceptance": "Tests cover timezone changes, DST missing/repeated hours, downtime, repeated scheduler delivery and cancelled routines. The UI shows the next runs in local time. Schedule creation respects tenant budgets and active-agent limits.",
+      "bootstrap_dependencies": [
+        "FLW-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-020"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-003",
+      "title": "Handle authenticated event triggers",
+      "phase": "P0",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "Support signed webhook triggers and approved connector polling. Verify signatures and freshness, deduplicate event IDs, rate-limit ingestion, retain minimal event evidence and persist cursor progress. An external payload is untrusted input, not an instruction with administrative authority.",
+      "acceptance": "Replayed, forged and cross-tenant events cannot create work. Polling restart does not reprocess an already completed enquiry. A flood is throttled with observable backlog and does not starve other tenants.",
+      "bootstrap_dependencies": [
+        "FLW-001",
+        "INT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-017"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-004",
+      "title": "Provide safe testing and publish controls",
+      "phase": "P0",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "Offer schema validation, sample-input replay, dry-run planning and a test destination. Dry-run must never execute external side effects; it uses actual reads only where explicitly authorised and reports any expected cost. Require owner/manager publication approval for a workflow that introduces new effects.",
+      "acceptance": "A “test” button cannot send a real customer email accidentally. Test and production credentials are separate. Publishing displays changes to recipients, tools, knowledge, budgets and approvals and records the approving human.",
+      "bootstrap_dependencies": [
+        "FLW-001",
+        "POL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-021"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-005",
+      "title": "Deliver a usable visual and textual editor",
+      "phase": "P1",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "Provide a structured visual editor and a portable versioned JSON/YAML representation with equivalent validation. Support step ordering, conditions, bounded loops, error branches, human checkpoints and child workflows. Import must be schema-validated; do not execute embedded code from an untrusted workflow definition.",
+      "acceptance": "Export/import preserves supported semantics. Keyboard users can build and edit a workflow without dragging. The editor exposes cost/risk implications and cannot publish a path that has no permitted success or exception outcome.",
+      "bootstrap_dependencies": [
+        "FLW-001",
+        "FLW-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-042"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "FLW-006",
+      "title": "Govern reusable skills and recipes",
+      "phase": "P1",
+      "section": 12,
+      "section_title": "Workflow builder, routines, and triggers",
+      "workstream": "WS-05",
+      "requirement": "Maintain an organisation template library with author, version, scopes, change log, tests and approval status. Templates may include instructions and certified capabilities but never embedded secrets. Shared marketplace-style distribution requires separate review and provenance controls.",
+      "acceptance": "Upgrading a template shows a diff and does not automatically increase an existing agent’s access. Removing a template version does not erase the historical configuration of past runs.",
+      "bootstrap_dependencies": [
+        "FLW-004",
+        "FLW-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-042"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TPL-001",
+      "title": "Sales administration and follow-up",
+      "phase": "P0",
+      "section": 13,
+      "section_title": "Initial business-role templates",
+      "workstream": "WS-11",
+      "requirement": "Inputs: a selected enquiry mailbox or authenticated enquiry event; an approved service/price catalogue; a connected CRM or approved customer-record destination; business hours; response style; and a named supervisor. Actions: classify the enquiry, detect duplicates, find the customer record, request missing information, prepare a factual response or quotation draft, propose a CRM update, obtain approval for external effects, submit through a certified operation, verify and schedule follow-up.",
+      "acceptance": "End-to-end tests cover new/existing customers, missing scope, conflicting prices, duplicate enquiries, wrong recipient, stopped follow-up after reply, rejected quotation, expired catalogue, provider timeout and revoked access. The agent never invents a price, discount, contract term or delivery commitment. A follow-up sends only when the configured relationship/consent policy permits it; bulk prospecting is not silently enabled.",
+      "bootstrap_dependencies": [
+        "WRK-005",
+        "KNW-005",
+        "INT-002",
+        "FLW-004",
+        "AGT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-013",
+        "QA-039"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TPL-002",
+      "title": "Customer-support assistant",
+      "phase": "P1",
+      "section": 13,
+      "section_title": "Initial business-role templates",
+      "workstream": "WS-11",
+      "requirement": "Classify requests, retrieve approved answers, prepare responses, collect missing details, propose ticket updates and escalate complaints or out-of-policy requests. Define queues, response expectations, escalation destinations and authorised knowledge. Refund execution and account-security changes remain excluded from the launch role.",
+      "acceptance": "The agent cites internal evidence to its supervisor, avoids exposing internal notes to customers, stops on identity or permission ambiguity, and preserves the full ticket context during handoff. Reopened issues are not miscounted as new successful resolutions.",
+      "bootstrap_dependencies": [
+        "WRK-005",
+        "KNW-005",
+        "INT-002",
+        "FLW-004",
+        "AGT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TPL-003",
+      "title": "Operations and reporting assistant",
+      "phase": "P1",
+      "section": 13,
+      "section_title": "Initial business-role templates",
+      "workstream": "WS-11",
+      "requirement": "Collect authorised project or operational status, identify missing updates, calculate approved indicators and deliver scheduled summaries with source links. Prepare reminders and proposed record changes without silently editing critical business data.",
+      "acceptance": "Reports identify their reporting period, data freshness, calculation inputs and missing sources. A partial source outage produces an explicitly incomplete report rather than fabricated totals. Duplicate schedules do not deliver duplicate reports.",
+      "bootstrap_dependencies": [
+        "WRK-005",
+        "KNW-005",
+        "INT-002",
+        "FLW-004",
+        "AGT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TPL-004",
+      "title": "General role creation and future departments",
+      "phase": "P1",
+      "section": 13,
+      "section_title": "Initial business-role templates",
+      "workstream": "WS-11",
+      "requirement": "Allow customers to create custom roles using approved tools, knowledge and typed workflow components. Provide starter recipes for executive briefing, account management and internal research. Defer high-impact HR/finance decisions, autonomous spending, unrestricted coding/deployment and public campaign automation to separately approved scopes.",
+      "acceptance": "A custom role is subject to the same publication trial, budget, policy and effect verification as a built-in role. Naming an agent “CFO” or “Administrator” does not grant financial or administrator permissions.",
+      "bootstrap_dependencies": [
+        "WRK-005",
+        "KNW-005",
+        "INT-002",
+        "FLW-004",
+        "AGT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-001",
+      "title": "Implement a certified capability catalogue",
+      "phase": "P0",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "For each enabled operation, record provider, version, authentication model, required scopes, resource constraints, read/write classification, sensitivity, input/output schemas, idempotency/reconciliation support, expected cost and timeout. Tool-name regexes alone are not sufficient authorisation. Unknown or changed operation schemas fail closed until reviewed.",
+      "acceptance": "Every tool visible to a production agent has a reviewed capability manifest and contract tests. An unregistered mutating operation cannot run even when a vendor catalogue exposes it.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-002",
+      "title": "Ship a narrow end-to-end integration set",
+      "phase": "P0",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "The first certified workflow must have one email/enquiry source, one approved knowledge source, one customer-record destination and transactional notifications. Default development targets are Gmail, selected Google Drive documents and a sandbox CRM adapter. Before live pilot, certify the actual chosen CRM and account permissions; do not pretend an emulator is a live CRM integration.\n\nP1 adds the second major email suite, calendar operations, a second CRM and selected workplace messaging based on validated demand. Keep provider-neutral interfaces so the product is not tied to one catalogue broker.",
+      "acceptance": "The pilot role passes against real authorised test accounts on the selected stack. Each connector has documented supported operations and gaps. Connector unavailability produces repair/escalation, not a covert browser bypass.",
+      "bootstrap_dependencies": [
+        "INT-001",
+        "INT-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-003",
+      "title": "Protect connection and credential lifecycle",
+      "phase": "P0",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "Use authorised OAuth/API-key flows; bind state and callbacks to tenant, user, provider and initiating session. Request least-privilege scopes, store credentials encrypted server-side, redact outputs and rotate/revoke safely. Distinguish a user-owned connection from an organisation service connection and name the accountable owner.",
+      "acceptance": "Cross-tenant OAuth callback substitution and token replay fail. Agents and browser clients cannot read raw secrets. Disconnecting stops future use and invalidates dependent schedules; shared service connections survive a staff departure only through explicit ownership reassignment.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-004",
+      "title": "Show health, consent and scope changes",
+      "phase": "P0",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "Display connected account identity, resource scope, last success, sync freshness, token expiry state and actions requiring reconnection. Scope expansion requires a new explicit consent and policy review. Backoff and circuit breakers must honour provider retry signals without infinite loops.",
+      "acceptance": "A 401/403 moves the task to credential repair rather than retrying until the budget is exhausted. A revoked resource cannot continue through a cached synchronisation token. Connection tests do not issue a write unless the test clearly requests it.",
+      "bootstrap_dependencies": [
+        "INT-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-005",
+      "title": "Govern custom MCP and OpenAPI sources",
+      "phase": "P1",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "Provide operator/admin-reviewed custom connectors with HTTPS endpoint validation, SSRF protections, schema limits, operation allowlists and isolated credentials. Do not let agents autonomously install arbitrary servers or grant them company-wide access. Treat descriptions and tool results as untrusted text.",
+      "acceptance": "Private-network, metadata-service, redirect and DNS-rebinding attacks are blocked by the deployed network path. A custom connector cannot read other tenants’ credentials, mutate permissions or bypass approval because of its chosen operation name.",
+      "bootstrap_dependencies": [
+        "INT-001",
+        "INT-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-045"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "INT-006",
+      "title": "Meet provider production and commercial requirements",
+      "phase": "P0",
+      "section": 14,
+      "section_title": "Integrations and connector governance",
+      "workstream": "WS-06",
+      "requirement": "Maintain a per-provider checklist covering terms, commercial embedding, OAuth verification, data processing, rate limits, support and offboarding. Google’s documentation distinguishes sensitive/restricted Gmail scopes and additional verification/security requirements; the actual deployed scopes and architecture determine the required work. [S10] Do not assume a connector broker removes all publisher responsibilities.",
+      "acceptance": "Live enablement checks the provider’s approved status. Unresolved terms or verification block the affected connection in production while tests can continue with safe fixtures. Consumer subscriptions are not pooled as a hidden substitute for authorised commercial access.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [
+        "S10"
+      ],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-001",
+      "title": "Centralise deny/approve/allow decisions",
+      "phase": "P0",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "Create a deterministic policy service invoked before every capability execution. Policy changes are versioned. Explicit prohibitions cannot be overridden by an agent, a model judge or an “always allow” preference. Normal users cannot create broader grants than they possess. Missing policy state, invalid signatures or unavailable mandatory policy storage must fail closed for effects.",
+      "acceptance": "Unit/property tests cover rule precedence, conflicting grants, unknown operations and policy-service failure. Every external effect has an auditable policy decision tied to its exact capability and input digest.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-038"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-002",
+      "title": "Bind human approval to the exact action",
+      "phase": "P0",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "An approval includes tenant, task/run, actor, capability version, destination, canonical argument hash, resource version where available, data classification, estimated spend, policy version, approver authority, expiry and one-time execution nonce. The card displays the actual recipients, content, amounts or record diff. Changes to material arguments, policy or source validity invalidate it.",
+      "acceptance": "Editing a recipient or quotation after approval requires a new approval. Two workers cannot consume the same one-time authority twice. Expired approvals, removed approvers and approval links opened in the wrong organisation fail. A model-generated “approved” message has no authority.",
+      "bootstrap_dependencies": [
+        "POL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-004",
+        "QA-005",
+        "QA-006"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-003",
+      "title": "Close browser, shell and delegation bypass paths",
+      "phase": "P0",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "Every route capable of an external effect must either be mediated with enforceable policy or be disabled in the production profile. A raw shell, browser session with broad cookies, or direct network request must not bypass a denied connector operation. Isolated compute alone does not make an action authorised.\n\nUse dedicated low-privilege service accounts, network egress restrictions and certified operations. Where browser semantics cannot be reliably constrained, run without effect-capable credentials, restrict to an isolated approved environment, or require a human to perform the action through takeover. Do not claim that a prompt, screenshot classifier or disabled UI button guarantees browser read-only operation.",
+      "acceptance": "Tests attempt an unauthorised send/delete through API, browser, shell, script, custom connector and child agent. Unsupported paths remain unavailable to paying tenants. No exception is accepted merely to make a demo succeed.",
+      "bootstrap_dependencies": [
+        "POL-001",
+        "INT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-008",
+        "QA-009"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-004",
+      "title": "Support bounded automation policies",
+      "phase": "P1",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "Managers may author pre-approved policy envelopes for low-risk repeated actions: permitted recipients/resources, maximum number of actions, time window, approved template/data fields and spending limits. Record who granted the envelope and why. Permission changes, stale knowledge or anomalous inputs invalidate execution. An AI reviewer may escalate risk, not remove mandatory human requirements.",
+      "acceptance": "A routine can automate an explicitly allowed CRM note while still asking before an email or price change. An out-of-envelope recipient, field or volume fails closed. Customers can inspect and revoke all standing grants.",
+      "bootstrap_dependencies": [
+        "POL-001",
+        "POL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-005",
+      "title": "Deliver an approval inbox and reliable escalation",
+      "phase": "P0",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "Provide actionable in-app approval cards, filters, assigned approvers, due times and notifications. Notification links open the authenticated action review; never execute approval on an unauthenticated GET or from email-link prefetch. Avoid disclosing confidential content in lock-screen notifications.",
+      "acceptance": "Approvals work on mobile web, are resistant to double clicks/replay and preserve exact action details. Approver reassignment revalidates scope. Rejection records a reason and resumes the workflow’s rejection branch without executing the original effect.",
+      "bootstrap_dependencies": [
+        "POL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-007"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "POL-006",
+      "title": "Provide emergency containment",
+      "phase": "P0",
+      "section": 15,
+      "section_title": "Policy engine, approvals, and action safety",
+      "workstream": "WS-03",
+      "requirement": "Owners can pause an agent, workflow, connection or whole organisation. Platform responders can disable a compromised capability/provider globally with a documented incident procedure. Stops propagate to descendants and revoke unconsumed action authority. Already dispatched requests are reconciled and presented honestly.",
+      "acceptance": "Stop controls are always reachable, including when the model is streaming. Enforcement meets Section 25. A global disable prevents queued jobs from using cached grants and records the operator, reason and impact.",
+      "bootstrap_dependencies": [
+        "POL-001",
+        "BIL-004",
+        "AGT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-011"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "CMP-001",
+      "title": "Isolate computers by trust domain",
+      "phase": "P0",
+      "section": 16,
+      "section_title": "Agent computers, files, and human takeover",
+      "workstream": "WS-07",
+      "requirement": "Use a separate computer/home/browser profile for each tenant and each incompatible confidentiality boundary. Team sharing is allowed only for agents explicitly assigned to the same trust domain with equivalent relevant access. Treat bot folders as organisational structures, not security boundaries; require tested isolation at the execution, storage and credential layers.",
+      "acceptance": "A sales agent cannot read a confidential HR agent’s files or cookies. Cross-tenant provider references, snapshots, live-view links and filesystem paths are rejected. New computers contain no prior tenant data.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-030"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "CMP-002",
+      "title": "Keep agent compute separate from the service control plane",
+      "phase": "P0",
+      "section": 16,
+      "section_title": "Agent computers, files, and human takeover",
+      "workstream": "WS-07",
+      "requirement": "Run agent computers on separate infrastructure or managed sandbox providers with approved isolation characteristics. Do not mount the application’s production credentials, database volumes, Docker socket or fleet-management tokens into them. Disallow public-service local-host/desktop execution. Use constrained CPU, memory, disk, process count, network and runtime limits.",
+      "acceptance": "An agent cannot reach the database, cloud metadata service, unrelated tenant systems or the host-control API. Resource-exhaustion tests cannot bring down the application control plane. Sandbox provider conformance tests pass for the selected production provider.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "POL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "CMP-003",
+      "title": "Persist workspaces and recover safely",
+      "phase": "P0",
+      "section": 16,
+      "section_title": "Agent computers, files, and human takeover",
+      "workstream": "WS-07",
+      "requirement": "Implement encrypted, versioned, tenant-scoped workspace checkpoints on durable storage independent of the disposable provider machine. Quiesce browsers where needed for consistent profiles. Include artefact checksums, format/version metadata and restore tests. Distinguish portable workspace files from system packages that need reproducible images.",
+      "acceptance": "Destroying and replacing a computer restores the latest durable permitted workspace. Restoring does not revive revoked credentials, expired grants or deleted data; tombstones and access state are reapplied. Failed checkpoints surface as degraded recoverability, not silent success.",
+      "bootstrap_dependencies": [
+        "CMP-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-027"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "CMP-004",
+      "title": "Secure viewing and human takeover",
+      "phase": "P0",
+      "section": 16,
+      "section_title": "Agent computers, files, and human takeover",
+      "workstream": "WS-07",
+      "requirement": "Issue short-lived, authenticated view/control capabilities bound to tenant, user, computer, mode and session. View access does not imply control. Human takeover pauses conflicting agent input with exclusive leases. Protect passwords, MFA entry and sensitive screens from unnecessary model observation and logging.",
+      "acceptance": "A viewer cannot gain keyboard control by modifying a URL. Expired or revoked links stop working. Human and agent input do not race on the same control surface. After takeover, resume requires explicit release and revalidation of the task’s current state.",
+      "bootstrap_dependencies": [
+        "CMP-001",
+        "POL-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-028",
+        "QA-029"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "CMP-005",
+      "title": "Manage idle cost and health",
+      "phase": "P0",
+      "section": 16,
+      "section_title": "Agent computers, files, and human takeover",
+      "workstream": "WS-07",
+      "requirement": "Suspend idle computers according to the canonical defaults; release active resources while waiting for approval/input unless an explicit workflow dependency requires them. Track lifecycle failures, active time, storage size and orphaned machines. Reapers must verify ownership and leases before destroying resources.",
+      "acceptance": "Metered active time matches provider lifecycle records within the reconciliation tolerance. An orphan scan cannot delete a live unrelated machine. A suspended computer can resume with the same permitted workspace without duplicating the pending task.",
+      "bootstrap_dependencies": [
+        "CMP-003",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "MOD-001",
+      "title": "Route model traffic through a governed gateway",
+      "phase": "P0",
+      "section": 17,
+      "section_title": "Model gateway and intelligent cost routing",
+      "workstream": "WS-08",
+      "requirement": "Centralise provider authentication, approved model identifiers, modality support, context limits, data-processing rules, rate limits, timeout, retry, usage and circuit-breaker behaviour. Preserve the existing Pi integration unless measured limitations justify an adapter change. Model credentials must remain server-side and tenant-bound where customer-owned.",
+      "acceptance": "Every provider call is attributable to tenant, task, run, step and rate-card version. Direct provider calls outside the gateway are rejected by code-level tests and deployment controls. Unsupported models or endpoint settings cannot be selected through a forged request.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-026"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "MOD-002",
+      "title": "Choose the least costly evaluated model for the job",
+      "phase": "P0",
+      "section": 17,
+      "section_title": "Model gateway and intelligent cost routing",
+      "workstream": "WS-08",
+      "requirement": "Maintain capability profiles for classification, extraction, drafting, complex planning and vision/computer use. Select the lowest-cost model that passes the role’s quality and safety evaluation. Allow bounded escalation when a task genuinely requires additional capability. Do not automatically select the newest or most expensive model, and do not fall back across customer data-boundary restrictions.",
+      "acceptance": "Routing tests verify capability, quality, policy and budget constraints. Provider outage does not trigger an unrestricted expensive fallback. The customer sees a clear failure or approval request when an allowed fallback exceeds their budget or data-processing policy.",
+      "bootstrap_dependencies": [
+        "MOD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-026"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "MOD-003",
+      "title": "Optimise context without breaking privacy or correctness",
+      "phase": "P1",
+      "section": 17,
+      "section_title": "Model gateway and intelligent cost routing",
+      "workstream": "WS-08",
+      "requirement": "Use scoped retrieval, bounded context, approved summaries, token-aware limits and tenant-partitioned caches. Avoid repeatedly sending unchanged documents. Cache keys include tenant, effective access policy, source version, model and relevant configuration. Treat provider caching/billing semantics as adapter-specific; record actual usage rather than assuming a discount.",
+      "acceptance": "Permission or source changes invalidate relevant cache entries. Cache hit/miss tests cannot leak content across tenants. Cost/performance reports compare quality-preserving alternatives with observed usage, not only theoretical token counts.",
+      "bootstrap_dependencies": [
+        "MOD-001",
+        "KNW-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "MOD-004",
+      "title": "Support BYOK without hiding platform costs",
+      "phase": "P1",
+      "section": 17,
+      "section_title": "Model gateway and intelligent cost routing",
+      "workstream": "WS-08",
+      "requirement": "Allow authorised customers to connect commercial API credentials with clear responsibility for model charges. Platform compute, connector and storage limits still apply. Show estimates and unavailable usage data honestly. Operator-managed access and customer-managed access must have separate accounting paths. Local/private model endpoints are an enterprise-controlled option, not an arbitrary public-user SSRF surface.",
+      "acceptance": "A BYOK customer is not charged again for the same provider model usage by the platform’s usage ledger. Provider outages and quota exhaustion are explained. Switching credential mode cannot erase consumed platform usage or reset budgets.",
+      "bootstrap_dependencies": [
+        "MOD-001",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-041"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-001",
+      "title": "Implement the subscription and entitlement lifecycle",
+      "phase": "P0",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Support trial, active, grace/past-due, suspended, cancellation-scheduled and cancelled states. Entitlements are versioned and enforced server-side at admission and execution. Plan downgrade must not destroy existing data or silently strand tasks; show over-limit resources, prevent new growth and allow controlled remediation.",
+      "acceptance": "A tenant cannot exceed seats, agents, storage, active runs or paid features through the API. Duplicate webhook delivery does not duplicate a subscription. Cancellation, resubscription and downgrade preserve billing history and data access according to published policy.",
+      "bootstrap_dependencies": [
+        "IAM-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-024",
+        "QA-040"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-002",
+      "title": "Provide verifiable payment and invoicing paths",
+      "phase": "P0",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Define a payment-provider interface for customer identity, checkout, invoices, payment status, subscription changes, refunds/credits where authorised and signed webhooks. Enable live providers only after eligibility and commercial review. P0 may use manual invoices and externally verified payment settlement through a privileged, audited operator workflow; browser redirects and user screenshots are not proof of settlement.",
+      "acceptance": "The payment ledger links settled funds to the correct invoice and tenant. Test mode cannot activate live entitlements. Manual credits require an accountable operator and evidence; high-value adjustments can require a second approver. No plaintext card details are stored by this product.",
+      "bootstrap_dependencies": [
+        "BIL-001",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-024",
+        "QA-025"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-003",
+      "title": "Record consumption in an append-only usage ledger",
+      "phase": "P0",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Meter model tokens/charges, computer active seconds, integration usage, optional voice/OCR, storage and other billable units. Each event has a globally unique ID, tenant, root task, run/step, source provider, quantity, unit, rate-card version, observed/estimated status and timestamp. Corrections append compensating entries rather than overwriting history.",
+      "acceptance": "Replayed provider events, worker retries and child-agent aggregation cannot charge the same consumption twice. Provider invoices reconcile to the usage ledger within the published tolerance. Costs are represented with fixed-precision decimals or currency-aware integers, never floating-point money.",
+      "bootstrap_dependencies": [
+        "IAM-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-024",
+        "QA-041",
+        "QA-046"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-004",
+      "title": "Reserve and enforce budgets before consumption",
+      "phase": "P0",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Implement transactional reservation against organisation, period, workflow and root-task budgets before dispatch. A child draws from the root reservation rather than creating an unrelated spending pool. Track consumed, reserved and available amounts distinctly. Use bounded model requests and known compute quanta; reject or isolate operations whose maximum exposure cannot be bounded sufficiently for the plan.\n\nBefore a new operation, atomically verify entitlement, headroom and concurrency. Settle actual usage, release unused reservation and reconcile late provider corrections. Waiting for approval should not consume new resources merely to keep a model session alive. Provider-side hard caps supplement application limits where supported.",
+      "acceptance": "Concurrent workers cannot each spend the same remaining balance. A crash after reservation is recoverable. The system never admits an operation beyond its authorised exposure; unavoidable provider billing uncertainty is separately measured, disclosed and contained, not presented as a mathematically perfect external hard cap.",
+      "bootstrap_dependencies": [
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-022",
+        "QA-038"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-005",
+      "title": "Enforce task, time and delegation fuses",
+      "phase": "P0",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Apply the canonical root-task tool count, active-runtime, retry, child-depth, child-count and spend ceilings across all descendants. Count actual and failed billable work as consumed. Detect repetitive tool loops and identical failures. Additional allowance requires an authorised human or previously approved policy, not the agent’s own judgement.",
+      "acceptance": "A looping agent stops with partial results and a clear reason. Creating new subagents or new attempts cannot reset root exposure. A customer can pause safely at a budget boundary and resume only with available authorised budget.",
+      "bootstrap_dependencies": [
+        "BIL-004",
+        "AGT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-023"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-006",
+      "title": "Explain bills and customer limits",
+      "phase": "P1",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Provide invoices, usage breakdowns, period dates, allowance remaining, forecast uncertainty and configurable warning thresholds. Distinguish recurring access charges from consumable execution credits. Label trial, prepaid and promotional balances distinctly. Do not convert consumption into opaque credits without a visible conversion rule.",
+      "acceptance": "The customer can trace a line item to a workflow or agreed aggregated category without exposing restricted content. Currency formatting uses approved currency-specific precision metadata and includes explicit XOF test cases; no fixed FX conversion is assumed. Tax and invoice rules follow the approved commercial configuration.",
+      "bootstrap_dependencies": [
+        "BIL-001",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-046"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-007",
+      "title": "Handle dunning, disputes and revenue adjustments safely",
+      "phase": "P1",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Implement customer notifications, grace periods, suspension of new work, reconciliation, authorised credits and refund handling according to approved terms. Do not retry non-idempotent charges blindly. Failed payment must not remove access to billing, support, security controls or entitled data export.",
+      "acceptance": "A disputed or reversed payment produces the configured status and an audit record without silently deleting customer data. Repeated payment events and out-of-order webhooks converge to the correct state. Agents cannot issue platform refunds or modify their own subscription.",
+      "bootstrap_dependencies": [
+        "BIL-002",
+        "BIL-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-040"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "BIL-008",
+      "title": "Measure tenant contribution margin",
+      "phase": "P1",
+      "section": 18,
+      "section_title": "Commercial plans, billing, metering, and budgets",
+      "workstream": "WS-09",
+      "requirement": "Separate vendor cost, customer billable usage, platform revenue, infrastructure allocation and support allocation. Attribute child usage once. Show operator reports by tenant, plan, workflow and provider, with estimated values clearly identified. Never optimise away a safety check to improve margin.",
+      "acceptance": "A deterministic fixture reconciles invoice, usage and margin reports. Reports expose high-retry and high-support customers and distinguish one-time setup effort from recurring delivery cost.",
+      "bootstrap_dependencies": [
+        "BIL-002",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ADM-001",
+      "title": "Provide a customer administration centre",
+      "phase": "P0",
+      "section": 19,
+      "section_title": "Customer administration and platform operations",
+      "workstream": "WS-10",
+      "requirement": "Include organisation profile, members, roles, spaces, agent policies, connections, knowledge governance, approvals, budgets, notifications, security sessions, retention, exports and deletion requests. Show dangerous changes with their operational consequences. Feature visibility must follow actual entitlements and permissions.",
+      "acceptance": "An owner can explain who can access a document, which agents can use a connection and which workflows will stop if it is revoked. Admin changes are auditable and do not rely on hidden manual database updates.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ADM-002",
+      "title": "Build a separate platform operations console",
+      "phase": "P0",
+      "section": 19,
+      "section_title": "Customer administration and platform operations",
+      "workstream": "WS-10",
+      "requirement": "Manage tenant provisioning, deployed versions, service health, capacity, subscription state, aggregated usage, incidents, backup status, retention jobs and provider health. Keep it separate from the customer application’s permissions. Require privileged MFA and narrowly scoped operator roles.",
+      "acceptance": "Operators can investigate availability and spending without viewing customer prompts or secrets. Access to restricted customer data requires the support-access process. Administrative actions have reason codes and audit entries.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ADM-003",
+      "title": "Support customers without standing impersonation",
+      "phase": "P0",
+      "section": 19,
+      "section_title": "Customer administration and platform operations",
+      "workstream": "WS-10",
+      "requirement": "Implement time-limited, customer-approved support access specifying tenant, scope, operator, purpose and expiry. Display an active support session to the customer and allow revocation. Prefer redacted diagnostic bundles. Define a separately controlled emergency procedure for security incidents with post-incident review.",
+      "acceptance": "Support access expires automatically, cannot cross tenants and does not expose raw credentials. Access grants and actions are visible in audit history. No hidden universal “login as customer” route exists.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "SEC-007"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-035"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ADM-004",
+      "title": "Monitor service health and handle incidents",
+      "phase": "P0",
+      "section": 19,
+      "section_title": "Customer administration and platform operations",
+      "workstream": "WS-10",
+      "requirement": "Define owners, severity levels, alert routing, incident runbooks, status communication, containment, recovery and postmortems. Track customer-impacting outages separately from internal maintenance. Automatic retries must not obscure repeated partial failures.",
+      "acceptance": "A staging incident exercise demonstrates alert delivery, kill-switch use, provider isolation, data-safe recovery and customer-impact identification. No production SLO is promised without a named responder and operational coverage.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ADM-005",
+      "title": "Manage fleet provisioning and lifecycle",
+      "phase": "P0",
+      "section": 19,
+      "section_title": "Customer administration and platform operations",
+      "workstream": "WS-10",
+      "requirement": "Provision isolated tenant environments from reproducible infrastructure definitions. Steps include tenant registry, data store, key material, durable storage, runtime, DNS/certificate configuration where authorised, health checks and safe activation. Provisioning and teardown must be resumable and idempotent.",
+      "acceptance": "Re-running a partially failed provision does not create duplicate bills, databases or owners. A tenant becomes active only after checks pass. Teardown respects exports, retention, legal holds and owner authorisation.",
+      "bootstrap_dependencies": [
+        "IAM-002",
+        "BIL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-036"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "UXD-001",
+      "title": "Deliver a complete responsive web experience",
+      "phase": "P0",
+      "section": 20,
+      "section_title": "User experience, accessibility, and languages",
+      "workstream": "WS-01",
+      "requirement": "Provide desktop and mobile-responsive workflows for onboarding, agent configuration, conversations, work tracking, approvals, knowledge review and billing visibility. Prioritise mobile approval and stop controls. Use consistent typography, spacing, tokens, navigation and action hierarchy; preserve Qeyvo’s existing theme system and support a coherent light and dark theme where applicable without an unsolicited brand redesign.",
+      "acceptance": "Core journeys work at 360px mobile width and standard desktop widths without inaccessible controls or horizontal page overflow. Long transcripts and tables are virtualised/paginated. Usability testing covers a business supervisor who is not a developer.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-033"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "UXD-002",
+      "title": "Complete English and French localisation",
+      "phase": "P0",
+      "section": 20,
+      "section_title": "User experience, accessibility, and languages",
+      "workstream": "WS-01",
+      "requirement": "Externalise customer-facing text, including forms, validation, server errors, system notifications, emails, approval descriptions, invoices, empty states and generated template instructions. Support locale-aware dates, pluralisation, number formatting and timezone display. Keep user content in its original language unless translation is requested; record when a generated translation is being shown.",
+      "acceptance": "Automated key-coverage checks and human review find no missing English/French strings in released surfaces. Switching locale preserves task state. French labels do not clip. Search and core evaluations include bilingual and cross-language cases.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-033"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "UXD-003",
+      "title": "Meet the defined accessibility standard",
+      "phase": "P0",
+      "section": 20,
+      "section_title": "User experience, accessibility, and languages",
+      "workstream": "WS-01",
+      "requirement": "Target WCAG 2.2 AA for the released web scope, including keyboard navigation, visible focus, semantic controls, sufficient contrast, error association, screen-reader announcements and accessible authentication. The standard is the reference, not a certification claim. [S09] Do not depend on colour alone for risk or state.",
+      "acceptance": "Automated accessibility checks plus manual keyboard/screen-reader testing cover login, onboarding, chat, approval, knowledge upload and billing. The visual workflow editor has a non-drag alternative. Known blocking accessibility defects prevent release.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [
+        "S09"
+      ],
+      "acceptance_scenario_ids": [
+        "QA-033"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "UXD-004",
+      "title": "Make agency and uncertainty visible",
+      "phase": "P0",
+      "section": 20,
+      "section_title": "User experience, accessibility, and languages",
+      "workstream": "WS-01",
+      "requirement": "Show what the teammate is doing, what it needs, which system it will change, the available budget and why it stopped. Distinguish proposed, approved, executing, verified and unknown outcomes. A risk label or confidence estimate cannot substitute for evidence or permission. Explain limitations without overwhelming users with implementation jargon.",
+      "acceptance": "A reviewer can identify recipient, effect, source and approval scope before acting. Provider outage and data staleness are not presented as personal user mistakes. Progress updates never falsely suggest an external action completed.",
+      "bootstrap_dependencies": [
+        "BRD-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "UXD-005",
+      "title": "Preserve and complete Qeyvo native clients when released",
+      "phase": "P2",
+      "section": 20,
+      "section_title": "User experience, accessibility, and languages",
+      "workstream": "WS-01",
+      "requirement": "Preserve buildability and compatibility of existing Qeyvo Electron/Expo clients during shared changes. A commercial native release requires consistent Qeyvo branding, icons, signing, update infrastructure, locale coverage, permission review and compatibility tests. Preserve already-published bundle/application identifiers, deep-link schemes, signing relationships and update channels; a branding adjustment is not a reason to break installed clients. Create new identifiers only for genuinely new unpublished apps or an explicitly approved migration. Default the commercial client to the managed service; do not expose unsafe local-host execution as a SaaS feature.",
+      "acceptance": "Shipped Qeyvo native binaries use Qeyvo branding and retain required attribution. Existing installs upgrade through compatible channels and keep valid configuration/state. Release signing and store submission require owner authorisation. Web GA is not blocked merely because additional commercial native distribution is deferred.",
+      "bootstrap_dependencies": [
+        "UXD-001",
+        "BRD-002",
+        "REL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-050"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "DAT-001",
+      "title": "Maintain an explicit data-processing inventory",
+      "phase": "P0",
+      "section": 21,
+      "section_title": "Data protection, retention, export, and deletion",
+      "workstream": "WS-10",
+      "requirement": "Document data classes, purposes, locations, vendors, access roles and retention. Cover account records, company knowledge, messages, model prompts/results, browser cookies, credentials, files, screenshots, usage, audit and support diagnostics. Self-hosting the application must not be described as keeping all data local when external models/connectors process it.",
+      "acceptance": "Published privacy/subprocessor information matches deployed providers. A tenant’s configured data restrictions are enforced before choosing a model, connector, backup destination or support export. No customer data is used for cross-customer learning by default.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-048"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "DAT-002",
+      "title": "Minimise retained content and protect sensitive records",
+      "phase": "P0",
+      "section": 21,
+      "section_title": "Data protection, retention, export, and deletion",
+      "workstream": "WS-10",
+      "requirement": "Store credentials separately from ordinary content and encrypt them with managed, versioned keys. Keep operational telemetry content-free by default. Avoid persisting screenshots/video unless the workflow and retention policy require it. Redact logs and approval notifications. Keep audit metadata separate from removable content payloads.",
+      "acceptance": "Automated secret-scanning fixtures confirm that tokens, passwords and connection cookies do not enter logs, prompts or analytics. Support diagnostics require explicit content inclusion and are access-controlled.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "DAT-003",
+      "title": "Enforce configurable retention and deletion",
+      "phase": "P0",
+      "section": 21,
+      "section_title": "Data protection, retention, export, and deletion",
+      "workstream": "WS-10",
+      "requirement": "Apply the canonical retention defaults with tenant settings within approved limits. Deletion must cover primary rows, objects, embeddings, summaries, search indexes, caches, generated exports and workspace checkpoints. Revoke access immediately when deletion is accepted; use tombstones so restore/reindex cannot resurrect deleted material. Backup copies expire according to the disclosed schedule rather than a false instant-erasure promise.",
+      "acceptance": "A deletion receipt identifies scope, immediate access revocation, active-store deletion completion and remaining backup expiry. Legal holds or mandatory financial retention are narrowly scoped and visible to authorised administrators. Restored environments replay tombstones before serving traffic.",
+      "bootstrap_dependencies": [
+        "KNW-001",
+        "CMP-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-034"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "DAT-004",
+      "title": "Offer portable, access-controlled exports",
+      "phase": "P0",
+      "section": 21,
+      "section_title": "Data protection, retention, export, and deletion",
+      "workstream": "WS-10",
+      "requirement": "Export permitted company knowledge, agent/workflow configuration, task/effect history and artefacts in documented formats such as Markdown, JSON, CSV and original files. Exclude raw provider secrets by default. Exports are asynchronous, encrypted, time-limited and auditable; large exports must not overwhelm interactive workloads.",
+      "acceptance": "A customer can read the export without proprietary tooling. Re-import tests validate supported structures. Export permissions are checked at request and download; a revoked user cannot use an old export link.",
+      "bootstrap_dependencies": [
+        "DAT-003",
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "DAT-005",
+      "title": "Define contract and compliance launch gates",
+      "phase": "P0",
+      "section": 21,
+      "section_title": "Data protection, retention, export, and deletion",
+      "workstream": "WS-10",
+      "requirement": "Prepare accurate terms of service, data-processing terms where needed, acceptable-use rules, subprocessors, support terms, incident communication and cancellation/offboarding policies. Review applicable obligations based on actual selling entity, customer jurisdictions, data types and providers. Do not generate a fake compliance certification or assume that the same legal regime applies to every customer.",
+      "acceptance": "The owner records legal approval and publishes the approved documents before customer data onboarding. Missing jurisdiction/vendor decisions are recorded as launch blockers. Software implementation can continue against conservative defaults without pretending legal review is complete.",
+      "bootstrap_dependencies": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "API-001",
+      "title": "Provide a governed public API and outgoing webhooks",
+      "phase": "P1",
+      "section": 24,
+      "section_title": "API, event, and state-machine contracts",
+      "workstream": "WS-06",
+      "requirement": "Provide scoped service accounts, key rotation/revocation, tenant-specific rate limits and documentation. Outgoing webhooks are signed, versioned, retried with bounded backoff and visible delivery status. Let customers replay a failed delivery without rerunning the original business task. Prevent webhook destinations from reaching internal/metadata networks.",
+      "acceptance": "Integration contract, replay, signature-failure and revocation tests pass; a published example application demonstrates the API using a non-production tenant.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "INT-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-045"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-001",
+      "title": "Establish reproducible capacity profiles",
+      "phase": "P0",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "Build load fixtures with tenant skew, realistic permissions, long conversations, background ingestion, exports, scheduled work and concurrent approvals. Use deterministic provider simulators for large load tests and a bounded, authorised live-provider sample for actual behaviour. Simulated tests do not certify model quality or provider capacity.\n\n| Profile | P0 pilot target | P1 GA target |\n|---|---|---|\n| Tenant/account population | 5 tenants; 50 registered users total | 100 tenants; 2,000 registered users total |\n| Simultaneously active people | 20 | 300 |\n| Root runs executing concurrently | 10 total; 2 per tenant | 50 total; plan cap no more than 10 per tenant by default |\n| Concurrent live update connections | 40 | 300 |\n| Reference retrieval dataset | 10,000 chunks in a tested tenant | 250,000 chunks in a tested large tenant |\n| Mixed workload | Chat, approvals, ingestion, scheduled jobs and one export | Same mix with skewed tenant demand and background maintenance |\n| Sustained test / burst | 60-minute steady load plus 5-minute 2× arrival burst | 120-minute steady load plus 10-minute 2× arrival burst |",
+      "acceptance": "The profile runs without cross-tenant leakage, unbounded queues, reservation errors, lost accepted tasks or process-memory growth that fails to stabilise. Bursts may queue or receive clear admission limits; they must not create uncontrolled spending. Record tested capacity instead of extrapolating to arbitrary tenant counts.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-044"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-002",
+      "title": "Meet interaction and execution latency budgets",
+      "phase": "P0",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "| Measurement | P0 target | P1 target | Scope |\n|---|---|---|---|\n| Ordinary API read p95 | ≤500 ms | ≤300 ms | Auth + policy + application + database; excludes external provider fetch. |\n| Ordinary API write p95 | ≤750 ms | ≤500 ms | Durable acknowledgement; does not wait for complete agent work. |\n| Task submission acknowledgement p95 | ≤1 second | ≤1 second | Task durably accepted or explicitly rejected. |\n| Persisted event to authorised UI p95 | ≤2 seconds | ≤1 second | Healthy live connection, excluding measured network latency. |\n| Normal-priority queue wait p95 | ≤5 seconds | ≤3 seconds | Within the admitted capacity profile. |\n| Hybrid retrieval p95 | ≤1 second | ≤750 ms | Reference dataset; excludes optional external model reranking, which is timed separately. |\n| Initial useful model response p95 | ≤8 seconds | ≤5 seconds | Qualified live model/provider; separate provider and internal timings. |\n| Dashboard LCP p75 | ≤2.5 seconds | ≤2.5 seconds | Documented standard mobile network profile and representative client. |\n| Slow-network dashboard LCP p75 | ≤5 seconds | ≤4 seconds | 1.5 Mbps downstream, 300 ms RTT; test assets/cache state recorded. |\n| Scheduled-job dispatch delay p95 | ≤30 seconds | ≤10 seconds | Under normal admitted load; not completion time. |\n| Text-document ingestion p95 | ≤5 minutes | ≤2 minutes | Clean text-based file up to 10 MiB / 200 pages; no OCR. |\n\nFor ordinary API reads/writes, p99 must not exceed three times the respective p95 target. API error rate under admitted non-chaos load must remain below 1%, excluding expected validated 4xx denials. In the first sales workflow, target p95 active completion time ≤180 seconds for a bounded reference enquiry, excluding human wait but including model/provider time; measure and revise through an ADR if a different qualified workflow requires a justified budget.",
+      "acceptance": "Versioned benchmark reports include raw distributions and failure counts. Tests fail on sustained regressions beyond the agreed budget. A provider bottleneck is documented rather than mislabelled as first-party success.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-003",
+      "title": "Guarantee responsive stop and revocation controls",
+      "phase": "P0",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "The service must durably acknowledge an emergency stop within 2 seconds at p99 under the admitted profile. Once stop/authority revocation commits, the execution gate must deny any newly authorised effect; do not depend only on delayed UI propagation. Signal active execution cancellation promptly and target sandbox/control termination within 10 seconds where the provider supports it. Requests already dispatched may have unknown outcomes and must be reconciled.",
+      "acceptance": "Race tests cover stop versus approval consumption, dispatch, child creation and provider timeout. The system proves no new authority is granted after the recorded stop boundary. It reports provider cancellation limits honestly; it cannot retract data already delivered to a provider.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-011"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-004",
+      "title": "Define availability, recovery and durability objectives",
+      "phase": "P0",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "| Objective | P0 | P1 |\n|---|---|---|\n| First-party customer-service availability target | 99.5% per rolling 30 days | 99.9% per rolling 30 days |\n| Durable-data recovery point objective (RPO) | ≤15 minutes | ≤5 minutes |\n| Service recovery time objective (RTO) | ≤4 hours | ≤1 hour |\n| Active workspace checkpoint interval target | ≤5 active minutes | ≤1 active minute for supported workloads |\n| Release observation before wider rollout | One internal/test tenant, then one pilot tenant | Canary cohort before fleet expansion |\n\nAvailability covers authenticated access to work, approvals and management; report model/connector dependency availability and complete workflow success separately. Publish the counting rules and report planned maintenance rather than hiding it. Acknowledged durable artefacts must already exist in the durable store, not solely inside a temporary computer.",
+      "acceptance": "Restore drills demonstrate RPO/RTO for database, objects, key references, configuration and deletion tombstones. Recovered billing allocations and unknown external effects are reconciled before execution resumes. Service targets are not advertised as contractual SLAs until operational evidence and support coverage support them.",
+      "bootstrap_dependencies": [
+        "ADM-005",
+        "CMP-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-034",
+        "QA-037"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-005",
+      "title": "Enforce fair resource consumption",
+      "phase": "P0",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "Use tenant-aware admission and fair scheduling, separate queues for interactive work and maintenance, per-tenant concurrency, upload limits, bounded response sizes, query timeouts and connection pools. Provide backpressure rather than crashing or dropping accepted tasks. No provider failure may cause unlimited retry fan-out.",
+      "acceptance": "A tenant submitting 10× its allowed arrival rate cannot prevent another admitted tenant’s approvals or stop controls. Large ingestion/export jobs stay within configured resource budgets. Slow consumers cannot accumulate unbounded streaming buffers.",
+      "bootstrap_dependencies": [
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-031"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "NFR-006",
+      "title": "Prevent reliability regressions",
+      "phase": "P1",
+      "section": 25,
+      "section_title": "Performance, capacity, and reliability requirements",
+      "workstream": "WS-12",
+      "requirement": "Collect baseline production-like benchmarks and regression budgets in CI. Profile database indexes, N+1 queries, connection use, frontend bundle size, memory growth, queue depth and checkpoint cost. Optimise based on measured bottlenecks, not wholesale infrastructure replacement.",
+      "acceptance": "A release with a material regression requires explicit sign-off and a remediation plan. A long-running soak test, dependency outage test and node-loss test preserve accepted work and financial invariants.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-001",
+      "title": "Maintain the threat model and abuse cases",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Model malicious users, compromised connectors, prompt-injected documents/emails, leaked sessions, rogue plugins, hostile websites, compromised agent computers and insider/support abuse. Document assets, trust boundaries, data flows, attacker capabilities and mitigations. Include economic abuse, cryptomining/resource misuse and attempts to exfiltrate credentials or customer documents.",
+      "acceptance": "Each major trust boundary has executable negative tests or a documented manual verification. The threat model is updated when adding a provider, a public API, native clients, a new deployment topology or a new high-impact action.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-044"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-002",
+      "title": "Harden network and execution boundaries",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Block cloud metadata, internal administration networks and unintended private endpoints from agent/connector execution. Validate URLs across DNS resolution and redirects; mitigate rebinding using the actual connection path. Apply egress allowlists or approved proxies where needed. Remove privileges, host mounts and unnecessary capabilities from worker/agent environments. Containerisation alone is not accepted as proof of isolation.",
+      "acceptance": "Deployed tests cover SSRF, path traversal, archive traversal, unsafe file links, command injection, metadata access and sandbox escape exposure. Host-management credentials remain unreachable from an agent environment.",
+      "bootstrap_dependencies": [
+        "CMP-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-009"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-003",
+      "title": "Harden the application and upload pipeline",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Protect against CSRF, cross-site scripting, insecure object access, session fixation, injection, unsafe redirects and malicious uploads. Use secure cookies, appropriate browser headers and isolated previews. Scan uploaded files and generated downloads as appropriate; treat both as untrusted. Authenticate every screen/file/export endpoint, including websocket or streaming upgrades.",
+      "acceptance": "Security tests exercise normal routes and alternative fetch/stream paths. An uploaded SVG/HTML/document cannot execute in the application’s privileged origin. Error responses do not leak another tenant’s identifiers, secrets or stack details.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-016"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-004",
+      "title": "Defend against prompt injection and data poisoning",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Label external content as untrusted, separate instructions from retrieved data, minimise available tools, and apply deterministic permissions outside the model. Restrict outbound destinations and sensitive-data export. Review memory/skill promotion and test malicious instructions in documents, emails, tool descriptions, screenshots and peer-agent messages. Do not claim prompt injection has been solved by a single filter.",
+      "acceptance": "Attack fixtures cannot expand authority, reveal secrets, publish poisoned company policy or cause forbidden external actions. Failed model resistance is still contained by policy. Record residual risks and required human escalation.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-008"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-005",
+      "title": "Secure secrets and cryptographic lifecycle",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Use authenticated encryption, scoped keys and managed key references with rotation/version support. Keep production encryption keys out of images and source. Prevent logging of secrets, and do not expose raw credentials to the model. Define backup/restore and key-loss procedures; rotating a wrapping key must not accidentally make all customer credentials unreadable.",
+      "acceptance": "Rotation and rollback tests preserve authorised decryption while revoked access remains revoked. Secret redaction tests cover nested provider errors, debug traces and exported diagnostics. Production cannot start with development sample keys.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-037"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-006",
+      "title": "Secure the software supply chain",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Pin runtime images and lockfiles, generate an SBOM, scan dependencies/images, check licences, sign production artefacts where supported and restrict CI credentials. Review dependency and security updates before merging. Development agents must not upload private code or secrets to unapproved services during debugging.",
+      "acceptance": "Release evidence contains SBOM, scan results, image digests and provenance. No known exploitable critical or high-severity issue in the exposed release path remains unaddressed. Non-exploitable findings need documented analysis rather than a blanket scanner waiver.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "SEC-007",
+      "title": "Preserve audit integrity without over-retaining content",
+      "phase": "P0",
+      "section": 26,
+      "section_title": "Security requirements and threat model",
+      "workstream": "WS-12",
+      "requirement": "Record tenant, actor, action, resource, timestamp, authority, argument/content hash, outcome and correlation IDs in append-only audit metadata. Protect integrity with restricted writers and tamper-evident sequencing or signed digests; use immutable storage where the approved retention design supports it. Sensitive payloads remain separate and deletable according to policy.",
+      "acceptance": "Audit-tampering and missing-event checks detect alteration. Deleting document content does not falsify the fact that an authorised action occurred; access-controlled hashes/metadata remain only for approved retention. Backups and audit stores follow the same residency commitments.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ANA-001",
+      "title": "Measure product adoption without unnecessary surveillance",
+      "phase": "P0",
+      "section": 27,
+      "section_title": "Analytics, quality evaluation, and business outcomes",
+      "workstream": "WS-11",
+      "requirement": "Track organisation activation, connected systems, published knowledge, enabled teammates, completed trials, active workflows, approvals, verified outcomes and churn/cancellation reasons. Use tenant-safe analytics with minimal personal information. Do not send prompts, documents, email bodies or browser captures to product analytics by default.",
+      "acceptance": "Event schemas and dashboards have documented definitions. Customers and operators cannot inspect another tenant’s analytics. Tracking respects the deployed privacy/consent policy and includes a data-retention setting.",
+      "bootstrap_dependencies": [
+        "WRK-005",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ANA-002",
+      "title": "Evaluate task quality with independent evidence",
+      "phase": "P0",
+      "section": 27,
+      "section_title": "Analytics, quality evaluation, and business outcomes",
+      "workstream": "WS-11",
+      "requirement": "Create versioned representative datasets per role and language with expected tool use, ground-truth records, permitted outcomes and disallowed actions. Use deterministic checks and human sampling; model judges may assist but cannot be the only safety or success oracle. Test missing data, ambiguous requests, provider outages and hostile content, not only happy paths.",
+      "acceptance": "Each certified workflow has at least 100 representative evaluation cases across normal, exception and adversarial classes, with at least 20 materially different French-language cases for the bilingual launch. Report accuracy, unsupported-claim rate, intervention rate, policy violations and uncertainty, with case-level evidence.",
+      "bootstrap_dependencies": [
+        "KNW-005",
+        "WRK-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ANA-003",
+      "title": "Calculate credible customer value",
+      "phase": "P1",
+      "section": 27,
+      "section_title": "Analytics, quality evaluation, and business outcomes",
+      "workstream": "WS-11",
+      "requirement": "Compare a measured manual baseline with assisted handling time including setup allocation where relevant, review, correction, escalation and failed runs. Track accepted output, reopened work and verified outcomes. Show estimated savings as estimates; do not claim all agent runtime equals human time saved.",
+      "acceptance": "A customer report distinguishes measured time, customer-entered assumptions and inferred savings. Cost per accepted outcome includes failures and retries. The north-star metric cannot be inflated by duplicate or trivially generated tasks.",
+      "bootstrap_dependencies": [
+        "ANA-001",
+        "BIL-008"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ANA-004",
+      "title": "Control model and workflow releases with evaluation gates",
+      "phase": "P1",
+      "section": 27,
+      "section_title": "Analytics, quality evaluation, and business outcomes",
+      "workstream": "WS-11",
+      "requirement": "Run regression evaluations when changing prompts, models, retrieval, connector schemas, safety policy or workflow templates. Use canary deployment and compare quality, cost and latency. Keep a rollback path to a still-permitted version. Deactivated models/providers cannot be re-enabled by rollback.",
+      "acceptance": "A release failing an access, unauthorised-action or financial-invariant test is blocked regardless of average quality improvement. Quality/cost tradeoffs are documented and linked to the released version.",
+      "bootstrap_dependencies": [
+        "ANA-002",
+        "MOD-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-043"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TST-001",
+      "title": "Maintain a layered verification system",
+      "phase": "P0",
+      "section": 28,
+      "section_title": "Testing strategy and acceptance scenarios",
+      "workstream": "WS-12",
+      "requirement": "Preserve existing valid baseline tests and add unit, property-based, database integration, connector contract, E2E, security, migration, failure-injection, accessibility and load tests. Live-provider tests are explicit, budget-capped and use authorised test accounts. Offline fakes must be visibly identified; they cannot certify a live commercial integration.",
+      "acceptance": "CI runs the appropriate deterministic layers. A separate signed-off live acceptance report identifies provider, model, account scope, dataset, cost and observed results. Every requirement links to one or more tests or an explicitly manual review gate.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "TST-002",
+      "title": "Define and verify release quality",
+      "phase": "P0",
+      "section": 28,
+      "section_title": "Testing strategy and acceptance scenarios",
+      "workstream": "WS-12",
+      "requirement": "Release blockers include unauthorised access/effects, budget double-spend, irreversible data-loss defects, broken approval/cancellation, inability to restore, unexplained financial mismatch and materially misleading product claims. Minimum line coverage alone is not a release decision; prioritise boundary coverage and realistic failure paths.",
+      "acceptance": "Gate reviews enumerate passed, failed, skipped and externally blocked tests. No skipped live test is reported as passed. The product owner sees residual risks and actual capability limits before a pilot or GA release.",
+      "bootstrap_dependencies": [
+        "TST-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "REL-001",
+      "title": "Evolve Qeyvo without losing existing work or dependency traceability",
+      "phase": "P0",
+      "section": 30,
+      "section_title": "Migration, dependency maintenance, and release management",
+      "workstream": "WS-10",
+      "requirement": "Keep Qeyvo’s existing repository and history. Document the actual branch, release commit, dependency versions and product changes where available; do not fabricate a baseline. Never reset or replace Qeyvo with another codebase. Group product additions into modules while preserving working Qeyvo interfaces and intentional customisations. Review dependency fixes, especially security and migrations, before integrating only the necessary changes. Never deploy an automatically moving `edge` or unpinned image to customers.",
+      "acceptance": "An update rehearsal builds, migrates a representative Qeyvo copy, retains Qeyvo-specific behaviour and runs product/regression tests with a rollback plan. Qeyvo’s version and dependency manifest are visible to operators; unknown baseline details are labelled unknown. No existing completed feature is silently lost or replaced.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-051"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "REL-002",
+      "title": "Use data-safe migrations",
+      "phase": "P0",
+      "section": 30,
+      "section_title": "Migration, dependency maintenance, and release management",
+      "workstream": "WS-10",
+      "requirement": "Treat Qeyvo as an existing-data upgrade, not a fresh install. Inventory retained accounts, organisations, memberships, agents, routines, workflows, conversations, files, credentials, billing state and deployments wherever they exist. Prefer expand/migrate/contract changes: add compatible schema, backfill idempotently, validate, switch reads/writes, then remove old structures in a later controlled release. Preserve identifiers, encrypted data and key references during branding updates. Keep explicit mappings for any necessary identifier or storage-path changes. Do not require existing users to recreate accounts or re-onboard merely because this PRD is adopted.",
+      "acceptance": "Migrations run against production-shaped test data, tolerate rerun where intended, detect partial failure and include reconciliation queries. Destructive steps require owner approval and a verified restore path. Never run a volume-deleting compose command against retained data; inspect script behaviour before using it. Explicitly detect destructive flags such as `down -v` before running maintenance commands.",
+      "bootstrap_dependencies": [
+        "SEC-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-052"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "REL-003",
+      "title": "Release through staged, observable rollout",
+      "phase": "P0",
+      "section": 30,
+      "section_title": "Migration, dependency maintenance, and release management",
+      "workstream": "WS-10",
+      "requirement": "Use CI validation, signed/versioned artefacts where available, separate staging credentials, feature flags, an internal canary and a customer canary with an agreed rollout policy. Observe errors, quality, cost, queue health and support signals. Do not enable unverified enterprise features via a hidden flag.",
+      "acceptance": "Rollback is rehearsed and compatible with the migration strategy. A regression automatically pauses wider rollout. Release notes state real capability changes and known limitations, not only commit summaries.",
+      "bootstrap_dependencies": [
+        "TST-001",
+        "NFR-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "REL-004",
+      "title": "Support optional imports without replacing existing Qeyvo state",
+      "phase": "P1",
+      "section": 30,
+      "section_title": "Migration, dependency maintenance, and release management",
+      "workstream": "WS-10",
+      "requirement": "Ordinary Qeyvo upgrades preserve current state under REL-002 and do not require import into a replacement application. Separately provide an optional controlled import path for compatible external data only where customers actually need it. Map organisations, agents, memories, workflows and artefacts; exclude or reauthorise credentials where copying is unsafe. Detect collisions with existing Qeyvo identifiers and data. Preview the migration and provide an error report without silently dropping or replacing records.",
+      "acceptance": "A representative import verifies counts, relationships, hashes and permissions. Imported broad grants default to review rather than inheriting unsafe unrestricted execution. The original source remains unchanged until an explicit cutover.",
+      "bootstrap_dependencies": [
+        "FND-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-001",
+      "title": "Enterprise identity and provisioning",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Support approved SSO protocols/providers, enforceable organisation sign-in policy, directory provisioning/deprovisioning and audit export where contracted. Define emergency access, account linking and domain verification carefully. An email domain match alone does not authorise joining an organisation.",
+      "acceptance": "IdP disablement and SCIM removal invalidate sessions and future agent authority within the contracted target. Account-linking tests prevent takeover. SSO outage behaviour and break-glass use are documented and audited.",
+      "bootstrap_dependencies": [
+        "IAM-004",
+        "REL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-047"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-002",
+      "title": "Contracted residency, isolation and private connectivity",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Offer selected regions, dedicated deployments or private connections only with end-to-end mapping of database, objects, backups, model processing, connector processing, telemetry and support access. Private model endpoints must be operator-controlled and network-restricted. Residency is not satisfied by moving only the application server.",
+      "acceptance": "Automated deployment/routing checks prevent disallowed providers or locations. Failover preserves contractual boundaries or stops. Restore tests run inside the same approved boundaries.",
+      "bootstrap_dependencies": [
+        "DAT-001",
+        "ADM-005",
+        "NFR-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-048"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-003",
+      "title": "Advanced governance and customer key arrangements",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Add custom roles, dual approvals for selected categories, advanced audit export, legal holds and customer-managed key arrangements where feasible and contracted. Define key loss, revocation, backup access and support consequences. Do not imply certification before a real independent assessment.",
+      "acceptance": "Revoking a customer key prevents the documented decrypt paths and produces an understandable outage state. Approval chains cannot be collapsed by the agent. Audit exports preserve integrity and authorised redaction.",
+      "bootstrap_dependencies": [
+        "POL-002",
+        "SEC-005",
+        "SEC-007"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-004",
+      "title": "Customer-specific branding and agency management",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Allow controlled tenant-level branding and delegated management of multiple client organisations only after core tenancy is proven. Distinguish this from completing Qeyvo’s own P0 brand-consistency audit. Each managed client remains an independent tenant; a reseller view does not silently merge customer knowledge, billing or credentials.",
+      "acceptance": "A customer theme affects only that tenant. Delegated administrators see only explicitly granted client scopes. Upstream/third-party notices remain where required, and custom domains require ownership verification.",
+      "bootstrap_dependencies": [
+        "IAM-003",
+        "BRD-001",
+        "ADM-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [
+        "QA-049"
+      ],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-005",
+      "title": "Advanced communication and native channels",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Potential channels include commercial desktop/mobile applications, voice interaction and approved workplace messaging. Each requires its own permission model, identity mapping, retention, cost metering, consent and live acceptance. Voice transcription is not proof of speaker identity for sensitive approvals. WhatsApp or other external messaging must use authorised provider capabilities and reviewed terms, not unofficial account-control bypasses.",
+      "acceptance": "Released channels cannot weaken approval or tenancy rules. A message from an unverified external identity cannot trigger privileged work. Native release requirements follow UXD-005; voice/media costs obey root budgets.",
+      "bootstrap_dependencies": [
+        "UXD-005",
+        "INT-001",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    },
+    {
+      "id": "ENT-006",
+      "title": "Advanced departments and controlled agent-built skills",
+      "phase": "P2",
+      "section": 31,
+      "section_title": "Enterprise expansion and later capabilities",
+      "workstream": "WS-13",
+      "requirement": "Support additional department-specific templates and controlled proposals for new scripts or tools only through review, sandbox tests and certified capability publication. Agents may propose improvements but cannot deploy code, grant access or enable high-impact operations on their own.",
+      "acceptance": "A generated skill remains inert until schema/security review, tests and an authorised publication. Its updates cannot expand existing grants. Any new high-impact business domain receives a separate approved scope and risk assessment.",
+      "bootstrap_dependencies": [
+        "FLW-006",
+        "INT-005",
+        "SEC-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "owner": null,
+      "code_references": [],
+      "test_evidence": [],
+      "external_blockers": [],
+      "source_codes": [],
+      "acceptance_scenario_ids": [],
+      "baseline_classification": "NOT_ASSESSED",
+      "baseline_evidence": [],
+      "gap_summary": null
+    }
+  ],
+  "acceptance_scenarios": [
+    {
+      "id": "QA-001",
+      "phase": "P0",
+      "given_when": "Two tenants; substitute a foreign task/document/connection ID",
+      "expected_result": "Denial without content or metadata leakage",
+      "requirement_ids": [
+        "IAM-002",
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-002",
+      "phase": "P0",
+      "given_when": "One human belongs to two tenants; switch repeatedly",
+      "expected_result": "No cache, prompt, credential or stream bleed",
+      "requirement_ids": [
+        "IAM-002",
+        "KNW-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-003",
+      "phase": "P0",
+      "given_when": "Billing admin searches operational content",
+      "expected_result": "No content access without separate grant",
+      "requirement_ids": [
+        "IAM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-004",
+      "phase": "P0",
+      "given_when": "User removed while work waits for approval",
+      "expected_result": "No new effect under revoked authority",
+      "requirement_ids": [
+        "IAM-004",
+        "POL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-005",
+      "phase": "P0",
+      "given_when": "Approval granted; recipient/body/amount then changes",
+      "expected_result": "Approval invalidated; new review required",
+      "requirement_ids": [
+        "POL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-006",
+      "phase": "P0",
+      "given_when": "Two workers consume the same approval",
+      "expected_result": "One execution authority; no duplicate effect",
+      "requirement_ids": [
+        "POL-002",
+        "WRK-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-007",
+      "phase": "P0",
+      "given_when": "Forged or prefetched approval email URL",
+      "expected_result": "No approval or effect",
+      "requirement_ids": [
+        "POL-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-008",
+      "phase": "P0",
+      "given_when": "Email says to ignore policy and forward secrets",
+      "expected_result": "Policy contains attack; secrets not exposed",
+      "requirement_ids": [
+        "SEC-004",
+        "POL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-009",
+      "phase": "P0",
+      "given_when": "Denied send attempted through browser or shell",
+      "expected_result": "Blocked or unavailable; no bypass",
+      "requirement_ids": [
+        "POL-003",
+        "SEC-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-010",
+      "phase": "P0",
+      "given_when": "Low-privilege agent delegates to privileged peer",
+      "expected_result": "Child receives only intersection of grants",
+      "requirement_ids": [
+        "AGT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-011",
+      "phase": "P0",
+      "given_when": "Parent stops while children run",
+      "expected_result": "No new descendant authority; actual effects reported",
+      "requirement_ids": [
+        "POL-006",
+        "NFR-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-012",
+      "phase": "P0",
+      "given_when": "Source revoked while cached/in context",
+      "expected_result": "Future access denied; affected work stops/rebuilds",
+      "requirement_ids": [
+        "KNW-004",
+        "IAM-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-013",
+      "phase": "P0",
+      "given_when": "Two conflicting or expired price lists",
+      "expected_result": "Authoritative current source or escalation",
+      "requirement_ids": [
+        "KNW-002",
+        "TPL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-014",
+      "phase": "P0",
+      "given_when": "User privately corrects an answer",
+      "expected_result": "No silent company-wide memory promotion",
+      "requirement_ids": [
+        "KNW-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-015",
+      "phase": "P0",
+      "given_when": "Unsupported or scanned unreadable upload",
+      "expected_result": "Honest failure/optional OCR flow, no fake indexing",
+      "requirement_ids": [
+        "KNW-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-016",
+      "phase": "P0",
+      "given_when": "Malicious macro, HTML, SVG, archive or path",
+      "expected_result": "Quarantine or safe preview; no privileged execution",
+      "requirement_ids": [
+        "SEC-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-017",
+      "phase": "P0",
+      "given_when": "Replayed signed trigger or repeated submit click",
+      "expected_result": "One logical task per idempotency scope",
+      "requirement_ids": [
+        "FLW-003",
+        "WRK-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-018",
+      "phase": "P0",
+      "given_when": "Worker crashes after remote send but before commit",
+      "expected_result": "Reconcile receipt; no blind resend",
+      "requirement_ids": [
+        "WRK-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-019",
+      "phase": "P0",
+      "given_when": "Provider timeout with no definite outcome",
+      "expected_result": "`outcome_unknown`; human/reconciliation path",
+      "requirement_ids": [
+        "WRK-002",
+        "WRK-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-020",
+      "phase": "P0",
+      "given_when": "Routine spans DST/host restart/duplicate delivery",
+      "expected_result": "Documented schedule behaviour; no duplicate work",
+      "requirement_ids": [
+        "FLW-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-021",
+      "phase": "P0",
+      "given_when": "Dry-run includes proposed email/CRM write",
+      "expected_result": "No external effect",
+      "requirement_ids": [
+        "FLW-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-022",
+      "phase": "P0",
+      "given_when": "Two tasks compete for last budget balance",
+      "expected_result": "Atomic reservations prevent double spending",
+      "requirement_ids": [
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-023",
+      "phase": "P0",
+      "given_when": "Child loops or repeats expensive failures",
+      "expected_result": "Root tools/time/spend limits stop work",
+      "requirement_ids": [
+        "BIL-005",
+        "AGT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-024",
+      "phase": "P0",
+      "given_when": "Duplicate/out-of-order usage/payment events",
+      "expected_result": "Correct ledger and entitlements, no double charge",
+      "requirement_ids": [
+        "BIL-001",
+        "BIL-002",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-025",
+      "phase": "P0",
+      "given_when": "Test checkout or redirect claims payment succeeded",
+      "expected_result": "No live activation without verified settlement",
+      "requirement_ids": [
+        "BIL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-026",
+      "phase": "P0",
+      "given_when": "Model credentials unavailable or provider quota hit",
+      "expected_result": "Bounded retry; repair/stop; no unsafe fallback",
+      "requirement_ids": [
+        "MOD-001",
+        "MOD-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-027",
+      "phase": "P0",
+      "given_when": "Destroy agent computer during a task",
+      "expected_result": "Restore durable work and reconcile effects",
+      "requirement_ids": [
+        "CMP-003",
+        "WRK-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-028",
+      "phase": "P0",
+      "given_when": "Foreign/expired screen URL or control mode substitution",
+      "expected_result": "Access rejected; view cannot become control",
+      "requirement_ids": [
+        "CMP-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-029",
+      "phase": "P0",
+      "given_when": "Takeover and agent input compete",
+      "expected_result": "Exclusive control and clear resume semantics",
+      "requirement_ids": [
+        "CMP-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-030",
+      "phase": "P0",
+      "given_when": "Team agent probes unrelated confidential files",
+      "expected_result": "Isolation enforced at trust-domain boundary",
+      "requirement_ids": [
+        "CMP-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-031",
+      "phase": "P0",
+      "given_when": "Upload/export/agent tasks flood one tenant",
+      "expected_result": "Other tenants retain admitted service and stops",
+      "requirement_ids": [
+        "NFR-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-032",
+      "phase": "P0",
+      "given_when": "Audit Qeyvo branding and fix a residual inconsistent surface",
+      "expected_result": "Correct Qeyvo assets remain; fixed surface uses Qeyvo; secrets and data still work",
+      "requirement_ids": [
+        "BRD-001",
+        "BRD-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-033",
+      "phase": "P0",
+      "given_when": "French/English onboarding and mobile approval",
+      "expected_result": "Complete localisation and accessible journeys",
+      "requirement_ids": [
+        "UXD-001",
+        "UXD-002",
+        "UXD-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-034",
+      "phase": "P0",
+      "given_when": "Deleted document followed by backup restore",
+      "expected_result": "Tombstone prevents content resurrection",
+      "requirement_ids": [
+        "DAT-003",
+        "NFR-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-035",
+      "phase": "P0",
+      "given_when": "Support grant expires or is revoked",
+      "expected_result": "Access stops and history remains auditable",
+      "requirement_ids": [
+        "ADM-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-036",
+      "phase": "P0",
+      "given_when": "Partial tenant provisioning then retry",
+      "expected_result": "Safe resume; no duplicate owner/invoice/resources",
+      "requirement_ids": [
+        "ADM-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-037",
+      "phase": "P0",
+      "given_when": "Clean disaster recovery exercise",
+      "expected_result": "Demonstrated RPO/RTO and key/data consistency",
+      "requirement_ids": [
+        "NFR-004",
+        "SEC-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-038",
+      "phase": "P0",
+      "given_when": "Policy/budget service unavailable at dispatch",
+      "expected_result": "Fail closed; no unlimited paid execution",
+      "requirement_ids": [
+        "POL-001",
+        "BIL-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-039",
+      "phase": "P0",
+      "given_when": "Real reference sales enquiry with approved data",
+      "expected_result": "Verified outcome, evidence and correct usage",
+      "requirement_ids": [
+        "TPL-001",
+        "WRK-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-040",
+      "phase": "P1",
+      "given_when": "Downgrade/cancel/past-due subscription",
+      "expected_result": "Correct restrictions; no unexpected data deletion",
+      "requirement_ids": [
+        "BIL-001",
+        "BIL-007"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-041",
+      "phase": "P1",
+      "given_when": "BYOK and operator-paid tasks mixed",
+      "expected_result": "Correct non-duplicated model/platform accounting",
+      "requirement_ids": [
+        "MOD-004",
+        "BIL-003"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-042",
+      "phase": "P1",
+      "given_when": "Export/reimport workflow with broadened permissions",
+      "expected_result": "Validation/review; no silent escalation",
+      "requirement_ids": [
+        "FLW-005",
+        "FLW-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-043",
+      "phase": "P1",
+      "given_when": "New model is cheaper but worse on safety cases",
+      "expected_result": "Release blocked; previous allowed version retained",
+      "requirement_ids": [
+        "ANA-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-044",
+      "phase": "P1",
+      "given_when": "Pooled tenant deployment is proposed",
+      "expected_result": "Independent isolation, RLS if used, and load gates",
+      "requirement_ids": [
+        "IAM-002",
+        "NFR-001",
+        "SEC-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-045",
+      "phase": "P1",
+      "given_when": "Public API/webhook replay or revoked key",
+      "expected_result": "Denial/dedup; no rerun of original effect",
+      "requirement_ids": [
+        "API-001",
+        "INT-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-046",
+      "phase": "P1",
+      "given_when": "Decimal/XOF currency and late usage corrections",
+      "expected_result": "Currency-correct totals and transparent adjustments",
+      "requirement_ids": [
+        "BIL-003",
+        "BIL-006"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-047",
+      "phase": "P2",
+      "given_when": "Enterprise member deprovisioned via SCIM/IdP",
+      "expected_result": "Sessions and future execution revoked as contracted",
+      "requirement_ids": [
+        "ENT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-048",
+      "phase": "P2",
+      "given_when": "Data-residency restricted tenant changes provider",
+      "expected_result": "Routing denied when region/policy cannot be met",
+      "requirement_ids": [
+        "ENT-002",
+        "DAT-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-049",
+      "phase": "P2",
+      "given_when": "Customer-specific branding on one tenant",
+      "expected_result": "No change to other tenants; notices preserved",
+      "requirement_ids": [
+        "ENT-004"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-050",
+      "phase": "P2",
+      "given_when": "Existing Qeyvo native client upgrade/rollback and expired session",
+      "expected_result": "Compatible identifiers/update channels; Qeyvo branding; access-controlled",
+      "requirement_ids": [
+        "UXD-005"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-051",
+      "phase": "P0",
+      "given_when": "Existing Qeyvo feature already satisfies a PRD requirement",
+      "expected_result": "Evidence is recorded and implementation reused; no duplicate subsystem or loss of Qeyvo-specific behaviour",
+      "requirement_ids": [
+        "FND-001",
+        "FND-002",
+        "REL-001"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    },
+    {
+      "id": "QA-052",
+      "phase": "P0",
+      "given_when": "Upgrade a representative current Qeyvo dataset and configuration",
+      "expected_result": "Existing accounts, permissions, agents, workflows, credentials, files and routes remain valid; no repository reset or forced re-onboarding",
+      "requirement_ids": [
+        "FND-001",
+        "BRD-002",
+        "REL-002"
+      ],
+      "status": "NOT_ASSESSED",
+      "evidence": []
+    }
+  ]
+}
